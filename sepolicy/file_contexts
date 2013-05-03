@@ -34,7 +34,7 @@
 /dev/dsscomp                    u:object_r:graphics_device:s0
 
 # Accelerometer
-/dev/accelirq                   u:object_r:sensors_device:s0
+/dev/accelirq                   u:object_r:accelerometer_device:s0
 
 # System binaries
 /system/bin/pvrsrvinit 		u:object_r:pvrsrvinit_exec:s0
