@@ -37,7 +37,7 @@ TARGET_NO_BOOTLOADER := true
 BOARD_KERNEL_BASE := 0x80000000
 # BOARD_KERNEL_CMDLINE :=
 
-TARGET_KERNEL_CONFIG := fancykernel_big_tuna_defconfig
+TARGET_KERNEL_CONFIG := fml_tuna_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/tuna
 
 TARGET_PREBUILT_KERNEL := device/samsung/tuna/kernel
