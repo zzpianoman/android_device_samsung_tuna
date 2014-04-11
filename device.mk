@@ -204,7 +204,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Allow dexopting system apps to /cache and not /data
 PRODUCT_PROPERTY_OVERRIDES += \
-	dalvik.vm.dexopt-data-only=0
+	persist.dalvik.vm.dexopt-data-only=0
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
