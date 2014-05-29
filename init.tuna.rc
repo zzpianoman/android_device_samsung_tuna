@@ -35,7 +35,7 @@ on post-fs-data
 	mkdir /data/radio 0775 radio radio
 	mkdir /data/radio/log 0775 radio radio
 
-	symlink /system/etc/gps/xtra.bin /data/gps/xtra.bin
+	symlink /system/etc/gps /data/gps
 
 	setprop vold.post_fs_data_done 1
 
