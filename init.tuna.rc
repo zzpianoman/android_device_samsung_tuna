@@ -35,6 +35,8 @@ on post-fs-data
 	mkdir /data/radio 0775 radio radio
 	mkdir /data/radio/log 0775 radio radio
 
+	symlink /system/etc/gps/xtra.bin /data/gps/xtra.bin
+
 	setprop vold.post_fs_data_done 1
 
 # LTE
@@ -126,6 +128,8 @@ on fs
     chmod 0660 /sys/class/sec/gps/GPS_nRST/value
     chown system system /proc/mcspi1_cs3_ctrl
     chmod 0600 /proc/mcspi1_cs3_ctrl
+    chown system system /system/etc/gps/xtra.bin
+    chmod 0600 /system/etc/gps/xtra.bin
 
 # ril control auto-suspend
 	chmod 0660 /sys/bus/usb/devices/usb1/power/control
