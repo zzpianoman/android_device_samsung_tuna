@@ -30,6 +30,10 @@ ifdef BOARD_USE_TI_DOMX_LOW_SECURE_HEAP
 LOCAL_CFLAGS += -DDOMX_LOW_SECURE_HEAP
 endif
 
+ifneq ($(DEBUG_FORCE_STRICT_ALIASING),true)
+    LOCAL_CFLAGS += -fno-strict-aliasing
+endif
+
 LOCAL_SHARED_LIBRARIES := \
     libmm_osal \
     libc \
