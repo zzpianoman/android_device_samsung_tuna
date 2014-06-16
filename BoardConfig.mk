@@ -107,11 +107,6 @@ BOARD_SEPOLICY_UNION := \
         genfs_contexts \
         file_contexts
 
-
-# MWisBest is lazy.
-TARGET_SCREEN_WIDTH := 800
-TARGET_SCREEN_HEIGHT := 1280
-
 # TWRP
 DEVICE_RESOLUTION := 720x1280
 RECOVERY_SDCARD_ON_DATA := true
