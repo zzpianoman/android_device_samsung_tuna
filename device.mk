@@ -207,10 +207,6 @@ PRODUCT_PACKAGES += \
         fibmap.f2fs \
         f2fstat
 
-# Don't preload EGL drivers in Zygote at boot time
-PRODUCT_PROPERTY_OVERRIDES += \
-        ro.zygote.disable_gl_preload=true
-
 # Allow dexopting system apps to /cache and not /data
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.dalvik.vm.dexopttocache=1
