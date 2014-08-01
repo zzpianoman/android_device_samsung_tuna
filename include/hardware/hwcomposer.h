@@ -280,6 +280,8 @@ typedef struct hwc_layer_1 {
 
 } hwc_layer_1_t;
 
+#ifdef OMAP_ENHANCEMENT
+
 /*
  * HWC extension operations, see HWC_EXTENDED_API
  */
@@ -333,6 +335,7 @@ typedef struct hwc_layer_list_extended {
     hwc_layer_extended_t hwLayers[0];
 } hwc_layer_list_extended_t;
 
+#endif
 
 /* This represents a display, typically an EGLDisplay object */
 typedef void* hwc_display_t;
@@ -350,12 +353,14 @@ enum {
      * and acquire fences.
      */
     HWC_GEOMETRY_CHANGED = 0x00000001,
+#ifdef OMAP_ENHANCEMENT
     /*
      * HWC_EXTENDED_API is set by SurfaceFlinger to indicate that the h/w
      * composer HAL api has been extended and that the HAL implementation
      * can use functions in the extended ABI.
      */
     HWC_EXTENDED_API = 0x80000000,
+#endif
 };
 
 /*
@@ -487,6 +492,7 @@ typedef struct hwc_procs {
      */
     void (*hotplug)(const struct hwc_procs* procs, int disp, int connected);
 
+#ifdef OMAP_ENHANCEMENT
     /*
      * (*extension_cb)() is called by the h/w composer HAL. Its purpose is
      * to extend the api from h/w composer to SurfaceFlinger.
@@ -508,6 +514,7 @@ typedef struct hwc_procs {
                         void** data,
                         int size);
 
+#endif
 } hwc_procs_t;
 
 
