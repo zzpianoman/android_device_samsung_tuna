@@ -93,19 +93,19 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # OmniTorch
 PRODUCT_PACKAGES += \
-        OmniTorch
+	OmniTorch
 
 # NFC
 PRODUCT_PACKAGES += \
-        Nfc \
-        Tag
+	Nfc \
+	Tag
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
-        LiveWallpapers \
-        LiveWallpapersPicker \
-        VisualizationWallpapers \
-        librs_jni
+	LiveWallpapers \
+	LiveWallpapersPicker \
+	VisualizationWallpapers \
+	librs_jni
 
 # Key maps
 PRODUCT_COPY_FILES += \
@@ -142,13 +142,13 @@ PRODUCT_COPY_FILES += \
 
 # Melfas touchscreen firmware
 PRODUCT_COPY_FILES += \
-    device/samsung/tuna/mms144_ts_rev31.fw:system/vendor/firmware/mms144_ts_rev31.fw \
-    device/samsung/tuna/mms144_ts_rev32.fw:system/vendor/firmware/mms144_ts_rev32.fw
+	device/samsung/tuna/mms144_ts_rev31.fw:system/vendor/firmware/mms144_ts_rev31.fw \
+	device/samsung/tuna/mms144_ts_rev32.fw:system/vendor/firmware/mms144_ts_rev32.fw
 
 # Portrait dock image'
 # Not used anymore as far as I can tell
 #PRODUCT_COPY_FILES += \
-#    device/samsung/tuna/dock.png:system/vendor/res/images/dock/dock.png
+#	device/samsung/tuna/dock.png:system/vendor/res/images/dock/dock.png
 
 # Commands to migrate prefs from com.android.nfc3 to com.android.nfc
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
@@ -166,12 +166,12 @@ PRODUCT_COPY_FILES += \
 
 # NFCEE access control
 ifeq ($(TARGET_BUILD_VARIANT),user)
-    NFCEE_ACCESS_PATH := device/samsung/tuna/nfcee_access.xml
+	NFCEE_ACCESS_PATH := device/samsung/tuna/nfcee_access.xml
 else
-    NFCEE_ACCESS_PATH := device/samsung/tuna/nfcee_access_debug.xml
+	NFCEE_ACCESS_PATH := device/samsung/tuna/nfcee_access_debug.xml
 endif
 PRODUCT_COPY_FILES += \
-    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+	$(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=131072
@@ -197,10 +197,10 @@ PRODUCT_PACKAGES += \
 
 # F2FS filesystem
 PRODUCT_PACKAGES += \
-        mkfs.f2fs \
-        fsck.f2fs \
-        fibmap.f2fs \
-        f2fstat
+	mkfs.f2fs \
+	fsck.f2fs \
+	fibmap.f2fs \
+	f2fstat
 
 # Allow dexopting system apps to /cache and not /data
 PRODUCT_PROPERTY_OVERRIDES += \

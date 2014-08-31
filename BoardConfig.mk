@@ -57,9 +57,6 @@ USE_OPENGL_RENDERER := true
 # Force the screenshot path to CPU consumer
 COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 
-# Force using mic for screenrecord, otherwise it crashes instantly...
-#BOARD_SCREENRECORD_DEVICE_FORCE_AUDIO_MIC := true
-
 # Possible fix for Chromecast streaming...
 BOARD_USE_TI_DUCATI_H264_PROFILE := true
 
@@ -117,7 +114,6 @@ DEVICE_RESOLUTION := 720x1280
 RECOVERY_SDCARD_ON_DATA := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 BOARD_HAS_NO_REAL_SDCARD := true
-#TARGET_RECOVERY_INITRC := device/samsung/tuna/init.recovery.rc
 TW_INCLUDE_JB_CRYPTO := true
 TW_CRYPTO_FS_TYPE := "ext4"
 TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/omap/omap_hsmmc.0/by-name/userdata"
