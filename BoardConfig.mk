@@ -14,16 +14,14 @@
 # limitations under the License.
 #
 
-# This variable is set first, so it can be overridden
-# by BoardConfigVendor.mk
-USE_CAMERA_STUB := true
+DEVICE_FOLDER := device/samsung/tuna
 
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/tuna/BoardConfigVendor.mk
 
 # Default values, if not overridden else where.
-TARGET_BOARD_INFO_FILE ?= device/samsung/tuna/board-info.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/samsung/tuna/bluetooth
+TARGET_BOARD_INFO_FILE ?= $(DEVICE_FOLDER)/board-info.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= $(DEVICE_FOLDER)/bluetooth
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -41,13 +39,13 @@ BOARD_KERNEL_BASE := 0x80000000
 TARGET_KERNEL_CONFIG := fml_tuna_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/tuna
 
-TARGET_PREBUILT_KERNEL := device/samsung/tuna/kernel
+TARGET_PREBUILT_KERNEL := $(DEVICE_FOLDER)/kernel
 
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := omap4
 TARGET_BOOTLOADER_BOARD_NAME := tuna
 
-BOARD_EGL_CFG := device/samsung/tuna/egl.cfg
+BOARD_EGL_CFG := $(DEVICE_FOLDER)/egl.cfg
 BOARD_CREATE_TUNA_HDCP_KEYS_SYMLINK := true
 
 #BOARD_USES_HGL := true
@@ -70,9 +68,9 @@ TARGET_RECOVERY_UI_LIB := librecovery_ui_tuna
 
 # device-specific extensions to the updater binary
 TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_tuna
-TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/tuna
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_FOLDER)
 
-TARGET_RECOVERY_FSTAB = device/samsung/tuna/fstab.tuna
+TARGET_RECOVERY_FSTAB = $(DEVICE_FOLDER)/rootdir/fstab.tuna
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_SETS_FSTAB := true
@@ -103,7 +101,7 @@ BOARD_HAL_STATIC_LIBRARIES := libdumpstate.tuna
 BOARD_USES_SECURE_SERVICES := true
 
 BOARD_SEPOLICY_DIRS := \
-        device/samsung/tuna/sepolicy
+        $(DEVICE_FOLDER)/sepolicy
 
 BOARD_SEPOLICY_UNION := \
         genfs_contexts \
