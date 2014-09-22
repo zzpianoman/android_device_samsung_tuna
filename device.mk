@@ -31,6 +31,7 @@ PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 PRODUCT_PACKAGES := \
+	hwcomposer.tuna \
 	lights.tuna \
 	charger \
 	charger_res_images
@@ -44,6 +45,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
 	power.tuna
+
+#symlinks
+PRODUCT_PACKAGES += \
+	libion.so
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -207,6 +212,13 @@ PRODUCT_PACKAGES += \
 # Allow dexopting system apps to /cache and not /data
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.dalvik.vm.dexopttocache=1
+
+# TI OMAP4
+PRODUCT_PACKAGES += \
+	libion_ti \
+	smc_pa_ctrl \
+	tf_daemon \
+	libtf_crypto_sst
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
