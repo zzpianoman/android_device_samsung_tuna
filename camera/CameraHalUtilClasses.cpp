@@ -115,15 +115,15 @@ int EventProvider::disableEventNotification(int32_t frameTypes)
 
 /*--------------------CameraArea Class STARTS here-----------------------------*/
 
-status_t CameraArea::transfrom(size_t width,
-                               size_t height,
-                               size_t &top,
-                               size_t &left,
-                               size_t &areaWidth,
-                               size_t &areaHeight)
+status_t CameraArea::transfrom(uint32_t width,
+                               uint32_t height,
+                               int32_t &top,
+                               int32_t &left,
+                               uint32_t &areaWidth,
+                               uint32_t &areaHeight)
 {
     status_t ret = NO_ERROR;
-    size_t hRange, vRange;
+    uint32_t hRange, vRange;
     double hScale, vScale;
 
     LOG_FUNCTION_NAME
@@ -145,11 +145,11 @@ status_t CameraArea::transfrom(size_t width,
     return ret;
 }
 
-status_t CameraArea::checkArea(ssize_t top,
-                               ssize_t left,
-                               ssize_t bottom,
-                               ssize_t right,
-                               ssize_t weight)
+status_t CameraArea::checkArea(int32_t top,
+                               int32_t left,
+                               int32_t bottom,
+                               int32_t right,
+                               int32_t weight)
 {
 
     //Handles the invalid regin corner case.
@@ -196,7 +196,7 @@ status_t CameraArea::checkArea(ssize_t top,
 }
 
 status_t CameraArea::parseAreas(const char *area,
-                                size_t areaLength,
+                                uint32_t areaLength,
                                 android::Vector<android::sp<CameraArea> > &areas)
 {
     status_t ret = NO_ERROR;
@@ -207,7 +207,7 @@ status_t CameraArea::parseAreas(const char *area,
     const char *startToken = "(";
     const char endToken = ')';
     const char sep = ',';
-    ssize_t top, left, bottom, right, weight;
+    int32_t top, left, bottom, right, weight;
     char *tmpBuffer = NULL;
     android::sp<CameraArea> currentArea;
 
@@ -241,7 +241,7 @@ status_t CameraArea::parseAreas(const char *area,
             }
         else
             {
-            left = static_cast<ssize_t>(strtol(pStart, &pEnd, 10));
+            left = static_cast<int32_t>(strtol(pStart, &pEnd, 10));
             }
 
         if ( sep != *pEnd )
@@ -252,7 +252,7 @@ status_t CameraArea::parseAreas(const char *area,
             }
         else
             {
-            top = static_cast<ssize_t>(strtol(pEnd+1, &pEnd, 10));
+            top = static_cast<int32_t>(strtol(pEnd+1, &pEnd, 10));
             }
 
         if ( sep != *pEnd )
@@ -263,7 +263,7 @@ status_t CameraArea::parseAreas(const char *area,
             }
         else
             {
-            right = static_cast<ssize_t>(strtol(pEnd+1, &pEnd, 10));
+            right = static_cast<int32_t>(strtol(pEnd+1, &pEnd, 10));
             }
 
         if ( sep != *pEnd )
@@ -274,7 +274,7 @@ status_t CameraArea::parseAreas(const char *area,
             }
         else
             {
-            bottom = static_cast<ssize_t>(strtol(pEnd+1, &pEnd, 10));
+            bottom = static_cast<int32_t>(strtol(pEnd+1, &pEnd, 10));
             }
 
         if ( sep != *pEnd )
@@ -285,7 +285,7 @@ status_t CameraArea::parseAreas(const char *area,
             }
         else
             {
-            weight = static_cast<ssize_t>(strtol(pEnd+1, &pEnd, 10));
+            weight = static_cast<int32_t>(strtol(pEnd+1, &pEnd, 10));
             }
 
         if ( endToken != *pEnd )

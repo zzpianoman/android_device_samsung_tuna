@@ -1410,7 +1410,7 @@ status_t CameraHal::freePreviewBufs()
 }
 
 
-status_t CameraHal::allocPreviewDataBufs(size_t size, size_t bufferCount)
+status_t CameraHal::allocPreviewDataBufs(uint32_t size, uint32_t bufferCount)
 {
     status_t ret = NO_ERROR;
     int bytes;
@@ -1485,7 +1485,7 @@ status_t CameraHal::freePreviewDataBufs()
     return ret;
 }
 
-status_t CameraHal::allocImageBufs(unsigned int width, unsigned int height, size_t size,
+status_t CameraHal::allocImageBufs(unsigned int width, unsigned int height, uint32_t size,
                                    const char* previewFormat, unsigned int bufferCount)
 {
     status_t ret = NO_ERROR;

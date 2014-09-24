@@ -349,12 +349,12 @@ status_t OMXCameraAdapter::setAutoConvergence(const char *pValstr, const char *p
         }
 
         // transform the coordinates to 3A-type coordinates
-        mTouchAreas.itemAt(0)->transfrom((size_t)mPreviewData->mWidth/widthDivisor,
-                                         (size_t)mPreviewData->mHeight/heightDivisor,
-                                         (size_t&) ACParams.nACProcWinStartY,
-                                         (size_t&) ACParams.nACProcWinStartX,
-                                         (size_t&) ACParams.nACProcWinWidth,
-                                         (size_t&) ACParams.nACProcWinHeight);
+        mTouchAreas.itemAt(0)->transfrom(mPreviewData->mWidth/widthDivisor,
+                                         mPreviewData->mHeight/heightDivisor,
+                                         (int32_t&)ACParams.nACProcWinStartY,
+                                         (int32_t&)ACParams.nACProcWinStartX,
+                                         ACParams.nACProcWinWidth,
+                                         ACParams.nACProcWinHeight);
     }
 
     CAMHAL_LOGDB("nSize %d", (int)ACParams.nSize);

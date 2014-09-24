@@ -768,12 +768,12 @@ status_t OMXCameraAdapter::setTouchFocus()
             }
 
             // transform the coordinates to 3A-type coordinates
-            mFocusAreas.itemAt(n)->transfrom((size_t)mPreviewData->mWidth/widthDivisor,
-                                            (size_t)mPreviewData->mHeight/heightDivisor,
-                                            (size_t&)focusAreas->tAlgoAreas[n].nTop,
-                                            (size_t&)focusAreas->tAlgoAreas[n].nLeft,
-                                            (size_t&)focusAreas->tAlgoAreas[n].nWidth,
-                                            (size_t&)focusAreas->tAlgoAreas[n].nHeight);
+            mFocusAreas.itemAt(n)->transfrom(mPreviewData->mWidth/widthDivisor,
+                                             mPreviewData->mHeight/heightDivisor,
+                                             focusAreas->tAlgoAreas[n].nTop,
+                                             focusAreas->tAlgoAreas[n].nLeft,
+                                             focusAreas->tAlgoAreas[n].nWidth,
+                                             focusAreas->tAlgoAreas[n].nHeight);
 
             focusAreas->tAlgoAreas[n].nLeft =
                     ( focusAreas->tAlgoAreas[n].nLeft * TOUCH_FOCUS_RANGE ) / mPreviewData->mWidth;

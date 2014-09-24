@@ -1199,13 +1199,13 @@ void AppCallbackNotifier::notifyFrame()
                                 mapper.lock((buffer_handle_t)vBuf, CAMHAL_GRALLOC_USAGE, bounds, y_uv);
                                 y_uv[1] = y_uv[0] + mVideoHeight*4096;
 
-                                structConvImage input =  {frame->mWidth,
-                                                          frame->mHeight,
+                                structConvImage input =  {(int)frame->mWidth,
+                                                          (int)frame->mHeight,
                                                           4096,
                                                           IC_FORMAT_YCbCr420_lp,
                                                           (mmByte *)frame->mYuv[0],
                                                           (mmByte *)frame->mYuv[1],
-                                                          frame->mOffset};
+                                                          (int)frame->mOffset};
 
                                 structConvImage output = {mVideoWidth,
                                                           mVideoHeight,
@@ -1581,7 +1581,7 @@ void AppCallbackNotifier::setFrameProvider(FrameNotifier *frameNotifier)
     LOG_FUNCTION_NAME_EXIT;
 }
 
-status_t AppCallbackNotifier::startPreviewCallbacks(android::CameraParameters &params, CameraBuffer *buffers, uint32_t *offsets, int fd, size_t length, size_t count)
+status_t AppCallbackNotifier::startPreviewCallbacks(android::CameraParameters &params, CameraBuffer *buffers, uint32_t *offsets, int fd, uint32_t length, uint32_t count)
 {
     unsigned int *bufArr;
     int size = 0;
@@ -1748,7 +1748,7 @@ status_t AppCallbackNotifier::startRecording()
 }
 
 //Allocate metadata buffers for video recording
-status_t AppCallbackNotifier::initSharedVideoBuffers(CameraBuffer *buffers, uint32_t *offsets, int fd, size_t length, size_t count, CameraBuffer *vidBufs)
+status_t AppCallbackNotifier::initSharedVideoBuffers(CameraBuffer *buffers, uint32_t *offsets, int fd, uint32_t length, uint32_t count, CameraBuffer *vidBufs)
 {
     status_t ret = NO_ERROR;
     LOG_FUNCTION_NAME;
