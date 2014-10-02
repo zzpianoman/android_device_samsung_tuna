@@ -23,8 +23,6 @@
 ///Header file where all the OMX error codes are defined
 #include "OMX_Core.h"
 
-#include "Status.h"
-
 
 extern "C"
 {
@@ -32,8 +30,7 @@ extern "C"
 #include "timm_osal_error.h"
 };
 
-namespace Ti {
-namespace Utils {
+namespace android {
 
 ///Generic class with static methods to convert any standard error type to Android error type
 class ErrorUtils
@@ -50,7 +47,6 @@ public:
 
 };
 
-} // namespace Utils
-} // namespace Ti
+};
 
 #endif /// ERROR_UTILS_H

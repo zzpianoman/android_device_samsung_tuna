@@ -24,10 +24,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "Status.h"
-
-namespace Ti {
-namespace Utils {
+namespace android {
 
 class Semaphore
 {
@@ -59,5 +56,4 @@ private:
 
 };
 
-} // namespace Utils
-} // namespace Ti
+};

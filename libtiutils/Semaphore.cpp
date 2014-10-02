@@ -21,8 +21,7 @@
 #include <utils/Log.h>
 #include <time.h>
 
-namespace Ti {
-namespace Utils {
+namespace android {
 
 /**
    @brief Constructor for the semaphore class
@@ -228,5 +227,6 @@ status_t Semaphore::WaitTimeout(int timeoutMicroSecs)
 }
 
 
-} // namespace Utils
-} // namespace Ti
+};
+
+

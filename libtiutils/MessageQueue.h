@@ -22,19 +22,32 @@
 #include "DebugUtils.h"
 #include <stdint.h>
 
-#ifdef MSGQ_DEBUG
-#   define MSGQ_LOGDA DBGUTILS_LOGDA
-#   define MSGQ_LOGDB DBGUTILS_LOGDB
+///Uncomment this macro to debug the message queue implementation
+//#define DEBUG_LOG
+
+///Camera HAL Logging Functions
+#ifndef DEBUG_LOG
+
+#define MSGQ_LOGDA(str)
+#define MSGQ_LOGDB(str, ...)
+
+#undef LOG_FUNCTION_NAME
+#undef LOG_FUNCTION_NAME_EXIT
+#define LOG_FUNCTION_NAME
+#define LOG_FUNCTION_NAME_EXIT
+
 #else
-#   define MSGQ_LOGDA(str)
-#   define MSGQ_LOGDB(str, ...)
+
+#define MSGQ_LOGDA DBGUTILS_LOGDA
+#define MSGQ_LOGDB DBGUTILS_LOGDB
+
 #endif
 
 #define MSGQ_LOGEA DBGUTILS_LOGEA
 #define MSGQ_LOGEB DBGUTILS_LOGEB
 
-namespace Ti {
-namespace Utils {
+
+namespace TIUTILS {
 
 ///Message type
 struct Message
@@ -89,10 +102,6 @@ private:
     bool mHasMsg;
 };
 
-} // namespace Utils
-} // namespace Ti
-
-
-
+};
 
 #endif
