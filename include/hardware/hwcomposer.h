@@ -280,7 +280,7 @@ typedef struct hwc_layer_1 {
 
 } hwc_layer_1_t;
 
-#ifdef OMAP_ENHANCEMENT
+#if 1 /*def OMAP_ENHANCEMENT*/
 
 /*
  * HWC extension operations, see HWC_EXTENDED_API
@@ -353,7 +353,7 @@ enum {
      * and acquire fences.
      */
     HWC_GEOMETRY_CHANGED = 0x00000001,
-#ifdef OMAP_ENHANCEMENT
+#if 1 /*def OMAP_ENHANCEMENT*/
     /*
      * HWC_EXTENDED_API is set by SurfaceFlinger to indicate that the h/w
      * composer HAL api has been extended and that the HAL implementation
@@ -492,7 +492,7 @@ typedef struct hwc_procs {
      */
     void (*hotplug)(const struct hwc_procs* procs, int disp, int connected);
 
-#ifdef OMAP_ENHANCEMENT
+#if 1 /*def OMAP_ENHANCEMENT*/
     /*
      * (*extension_cb)() is called by the h/w composer HAL. Its purpose is
      * to extend the api from h/w composer to SurfaceFlinger.
