@@ -31,33 +31,57 @@
  */
 
 /*
- * @file:OMX_TI_Image.h
- * This header defines the structures specific to the param or config
- * indices of Openmax Image Component.
- *
- *  @path domx/system/omx_core/inc
- *
- *  @rev 1.0
- */
-
-/*==============================================================
+*  @file profile.h
+*  The header file defines the trace events definitions.
+*  @path platform\hardware\ti\domx\domx\profiling\inc\
+*
+*/
+/* -------------------------------------------------------------------------- */
+/* =========================================================================
+ *!
  *! Revision History
- *! ============================
- *! 11-Oct-2010  KMotov 	x0106653@ti.com  	Initial Version
- *================================================================*/
+ *! ===================================
+ *! 1.0: Created the first draft version
+ * ========================================================================= */
 
-#ifndef OMX_TI_IMAGE_H
-#define OMX_TI_IMAGE_H
+#ifndef _PROFILE_H_
+#define _PROFILE_H_
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif /* #ifdef __cplusplus */
+
+#include <OMX_Types.h>
+#include <OMX_Component.h>
+
+#include "omx_rpc_utils.h"
+#include "omx_proxy_common.h"
+
+enum KPI_BUFFER_EVENT {
+        KPI_BUFFER_ETB = 1,
+        KPI_BUFFER_FTB = 2,
+        KPI_BUFFER_EBD = 3,
+        KPI_BUFFER_FBD = 4
+};
 
 /**
- * The OMX_TI_IMAGE_CODINGTYPE enumeration is used to define the
- * extended image coding types.
+ * OMX monitoring component init. Registers component
  */
-typedef enum OMX_TI_IMAGE_CODINGTYPE {
-	OMX_TI_IMAGE_CodingJPS = OMX_IMAGE_CodingVendorStartUnused + 1, /**< JPS format */
-    OMX_TI_IMAGE_CodingMPO,           /**< MPO format */
-    OMX_TI_IMAGE_CodingJPEG_SOC,
-    OMX_TI_IMAGE_CodingJPEG_SOC_SPOOFED
-} OMX_TI_IMAGE_CODINGTYPE;
+void KPI_OmxCompInit(OMX_HANDLETYPE hComponent);
 
-#endif /* OMX_TI_IMAGE_H */
+/**
+ * OMX monitoring component deinit. Unregisters component
+ */
+void KPI_OmxCompDeinit(OMX_HANDLETYPE hComponent);
+
+/**
+ * OMA monitoring buffer event trace. Traces FTB/ETB/FBD/EBD event
+ */
+void KPI_OmxCompBufferEvent(enum KPI_BUFFER_EVENT event, OMX_HANDLETYPE hComponent, PROXY_BUFFER_INFO* pBuffer);
+
+#ifdef __cplusplus
+}
+#endif /* #ifdef __cplusplus */
+
+#endif /* #ifndef _PROFILE_H_ */
