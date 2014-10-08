@@ -406,7 +406,9 @@ static OMX_ERRORTYPE CameraSetParam(OMX_IN OMX_HANDLETYPE
     PROXY_COMPONENT_PRIVATE *pCompPrv;
     OMX_COMPONENTTYPE *hComp = (OMX_COMPONENTTYPE *)hComponent;
     OMX_U32 stride_Y = 0, stride_UV = 0;
+#ifndef TUNA_DOMX
     OMX_TI_PARAM_VTCSLICE *pVtcConfig;// = (OMX_TI_PARAM_VTCSLICE *)pComponentParameterStructure;
+#endif
     OMX_TI_PARAM_COMPONENTBUFALLOCTYPE *bufferalloc = NULL;
     int size = 0;
     int fd1 = -1, fd2 = -1;
