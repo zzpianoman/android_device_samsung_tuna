@@ -108,7 +108,7 @@
 #define BORDER_HEIGHT 32
 #define MAX_VTC_WIDTH_WITH_VNF (MAX_VTC_WIDTH + BORDER_WIDTH)
 #define MAX_VTC_HEIGHT_WITH_VNF (MAX_VTC_HEIGHT + BORDER_HEIGHT)
-#ifndef TUNA_DOMX
+#ifndef OMAP_TUNA
 OMX_PTR gCamIonHdl[MAX_NUM_INTERNAL_BUFFERS][2];
 #endif
 
@@ -178,7 +178,7 @@ static OMX_ERRORTYPE ComponentPrivateDeInit(OMX_IN OMX_HANDLETYPE hComponent)
 		PROXY_assert(eOsalError == TIMM_OSAL_ERR_NONE,
 		    OMX_ErrorInsufficientResources, "Mutex release failed");
 	}
-#ifndef TUNA_DOMX
+#ifndef OMAP_TUNA
         for(i=0; i < MAX_NUM_INTERNAL_BUFFERS; i++) {
             if (gCamIonHdl[i][0] != NULL) {
                 ion_free(pCompPrv->ion_fd, gCamIonHdl[i][0]);
@@ -406,7 +406,7 @@ static OMX_ERRORTYPE CameraSetParam(OMX_IN OMX_HANDLETYPE
     PROXY_COMPONENT_PRIVATE *pCompPrv;
     OMX_COMPONENTTYPE *hComp = (OMX_COMPONENTTYPE *)hComponent;
     OMX_U32 stride_Y = 0, stride_UV = 0;
-#ifndef TUNA_DOMX
+#ifndef OMAP_TUNA
     OMX_TI_PARAM_VTCSLICE *pVtcConfig;// = (OMX_TI_PARAM_VTCSLICE *)pComponentParameterStructure;
     OMX_TI_PARAM_COMPONENTBUFALLOCTYPE *bufferalloc = NULL;
 #endif
@@ -417,7 +417,7 @@ static OMX_ERRORTYPE CameraSetParam(OMX_IN OMX_HANDLETYPE
     //fprintf(stdout, "DOMX: CameraSetParam: called!!!\n");
     switch (nParamIndex)
     {
-#ifndef TUNA_DOMX
+#ifndef OMAP_TUNA
         case OMX_TI_IndexParamVtcSlice:
             pVtcConfig = (OMX_TI_PARAM_VTCSLICE *)pComponentParameterStructure;
             fprintf(stdout, "DOMX: CameraSetParam: OMX_TI_IndexParamVtcSlice is called!!!\n");
@@ -571,7 +571,7 @@ OMX_ERRORTYPE OMX_ComponentInit(OMX_HANDLETYPE hComponent)
 		TIMM_OSAL_Free(pComponentPrivate);
 		goto EXIT;
 	}
-#ifndef TUNA_DOMX
+#ifndef OMAP_TUNA
         for(i=0; i < MAX_NUM_INTERNAL_BUFFERS; i++) {
             gCamIonHdl[i][0] = NULL;
             gCamIonHdl[i][1] = NULL;

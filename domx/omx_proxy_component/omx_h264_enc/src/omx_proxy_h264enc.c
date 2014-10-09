@@ -485,7 +485,7 @@ OMX_ERRORTYPE LOCAL_PROXY_H264E_GetParameter(OMX_IN OMX_HANDLETYPE hComponent,
 		}
 #endif
         }
-#ifndef TUNA_DOMX
+#ifndef OMAP_TUNA
     else if (nParamIndex == OMX_TI_IndexComponentHandle)
     {
         OMX_TI_COMPONENT_HANDLE * pCompHandle = pParamStruct;
