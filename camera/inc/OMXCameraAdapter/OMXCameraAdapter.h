@@ -646,7 +646,7 @@ private:
     status_t getAutoConvergence(OMX_TI_AUTOCONVERGENCEMODETYPE *pACMode, OMX_S32 *pManualConverence);
 
     status_t setExtraData(bool enable, OMX_U32, OMX_EXT_EXTRADATATYPE);
-    OMX_OTHER_EXTRADATATYPE *getExtradata(OMX_OTHER_EXTRADATATYPE *extraData, OMX_EXTRADATATYPE type);
+    OMX_OTHER_EXTRADATATYPE *getExtradata(OMX_OTHER_EXTRADATATYPE *extraData, OMX_U32 extraDataSize, OMX_EXTRADATATYPE type);
 
     class CommandHandler : public Thread {
         public:
@@ -955,6 +955,7 @@ private:
     OMX_BOOL mUserSetExpLock;
     OMX_BOOL mUserSetWbLock;
 
+    Mutex mImageCaptureLock;
 };
 }; //// namespace
 #endif //OMX_CAMERA_ADAPTER_H

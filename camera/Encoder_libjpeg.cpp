@@ -187,6 +187,7 @@ static void resize_nv12(Encoder_libjpeg::params* params, uint8_t* dst_buffer) {
     i_img_ptr.eFormat = IC_FORMAT_YCbCr420_lp;
     i_img_ptr.imgPtr = (uint8_t*) params->src;
     i_img_ptr.clrPtr = i_img_ptr.imgPtr + (i_img_ptr.uWidth * i_img_ptr.uHeight);
+    i_img_ptr.uOffset = 0;
 
     //ouput
     o_img_ptr.uWidth = params->out_width;
@@ -195,6 +196,7 @@ static void resize_nv12(Encoder_libjpeg::params* params, uint8_t* dst_buffer) {
     o_img_ptr.eFormat = IC_FORMAT_YCbCr420_lp;
     o_img_ptr.imgPtr = dst_buffer;
     o_img_ptr.clrPtr = o_img_ptr.imgPtr + (o_img_ptr.uWidth * o_img_ptr.uHeight);
+    o_img_ptr.uOffset = 0;
 
     VT_resizeFrame_Video_opt2_lp(&i_img_ptr, &o_img_ptr, NULL, 0);
 }
@@ -275,7 +277,7 @@ status_t ExifElementsTable::insertExifThumbnailImage(const char* thumb, int len)
     status_t ret = NO_ERROR;
 
     if ((len > 0) && jpeg_opened) {
-        ret = ReplaceThumbnailFromBuffer(thumb, len);
+        ret = ReplaceThumbnailFromBuffer(thumb, len) ? NO_ERROR : UNKNOWN_ERROR;
         CAMHAL_LOGDB("insertExifThumbnailImage. ReplaceThumbnail(). ret=%d", ret);
     }
 
@@ -428,7 +430,7 @@ size_t Encoder_libjpeg::encode(params* input) {
 
     jpeg_start_compress(&cinfo, TRUE);
 
-    row_tmp = (uint8_t*)malloc(out_width * 3);
+    row_tmp = (uint8_t*)malloc((out_width - right_crop) * 3);
     row_src = src + start_offset;
     row_uv = src + out_width * out_height * bpp;
 

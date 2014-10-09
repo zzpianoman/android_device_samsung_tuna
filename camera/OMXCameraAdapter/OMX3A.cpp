@@ -260,7 +260,7 @@ status_t OMXCameraAdapter::setParameters3A(const CameraParameters &params,
             }
         else
             {
-            mParameters3A.FlashMode = OMX_Manual;
+            mParameters3A.FlashMode = OMX_IMAGE_FlashControlAuto;
             }
         }
 
