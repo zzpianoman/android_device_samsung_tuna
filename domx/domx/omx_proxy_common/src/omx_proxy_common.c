@@ -1016,6 +1016,7 @@ static OMX_ERRORTYPE PROXY_UseBuffer(OMX_IN OMX_HANDLETYPE hComponent,
 			((OMX_TI_PLATFORMPRIVATE *) pBufferHeader->pPlatformPrivate)->
 				pAuxBuf1 = NULL;
 		}
+#ifndef TUNA_DOMX
 		if(pCompPrv->proxyPortBuffers[nPortIndex].proxyBufferType == BufferDescriptorVirtual2D)
 		{
 			pAuxBuf0 = (OMX_U8 *)(((OMX_TI_BUFFERDESCRIPTOR_TYPE*)pBuffer)->pBuf[0]);
@@ -1023,6 +1024,7 @@ static OMX_ERRORTYPE PROXY_UseBuffer(OMX_IN OMX_HANDLETYPE hComponent,
 			((OMX_TI_PLATFORMPRIVATE *) pBufferHeader->pPlatformPrivate)->
 				pAuxBuf1 = (OMX_U8 *)(((OMX_TI_BUFFERDESCRIPTOR_TYPE*)pBuffer)->pBuf[1]);
 		}
+#endif
 	}
 
 	/*Initializing Structure */
@@ -1203,6 +1205,7 @@ OMX_ERRORTYPE PROXY_FreeBuffer(OMX_IN OMX_HANDLETYPE hComponent,
 	   unmapping/freeing, still trying to clean up as much as possible */
 	eError =
 	    RPC_UTIL_GetStride(pCompPrv->hRemoteComp, nPortIndex, &nStride);
+#ifndef TUNA_DOMX
 	if (eError == OMX_ErrorNone && nStride == LINUX_PAGE_SIZE)
 	{
 		if (pCompPrv->proxyPortBuffers[nPortIndex].proxyBufferType == BufferDescriptorVirtual2D)
@@ -1210,6 +1213,7 @@ OMX_ERRORTYPE PROXY_FreeBuffer(OMX_IN OMX_HANDLETYPE hComponent,
 			pAuxBuf0 = (OMX_U8 *)(((OMX_TI_BUFFERDESCRIPTOR_TYPE*)pBuffer)->pBuf[0]);
 		}
 	}
+#endif
 
 	/*Not having asserts from this point since even if error occurs during
 	   unmapping/freeing, still trying to clean up as much as possible */

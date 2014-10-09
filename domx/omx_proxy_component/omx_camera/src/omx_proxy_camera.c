@@ -408,8 +408,8 @@ static OMX_ERRORTYPE CameraSetParam(OMX_IN OMX_HANDLETYPE
     OMX_U32 stride_Y = 0, stride_UV = 0;
 #ifndef TUNA_DOMX
     OMX_TI_PARAM_VTCSLICE *pVtcConfig;// = (OMX_TI_PARAM_VTCSLICE *)pComponentParameterStructure;
-#endif
     OMX_TI_PARAM_COMPONENTBUFALLOCTYPE *bufferalloc = NULL;
+#endif
     int size = 0;
     int fd1 = -1, fd2 = -1;
 
