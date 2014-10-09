@@ -1016,7 +1016,7 @@ static OMX_ERRORTYPE PROXY_UseBuffer(OMX_IN OMX_HANDLETYPE hComponent,
 			((OMX_TI_PLATFORMPRIVATE *) pBufferHeader->pPlatformPrivate)->
 				pAuxBuf1 = NULL;
 		}
-#ifndef TUNA_DOMX
+#ifndef OMAP_TUNA
 		if(pCompPrv->proxyPortBuffers[nPortIndex].proxyBufferType == BufferDescriptorVirtual2D)
 		{
 			pAuxBuf0 = (OMX_U8 *)(((OMX_TI_BUFFERDESCRIPTOR_TYPE*)pBuffer)->pBuf[0]);
@@ -1205,7 +1205,7 @@ OMX_ERRORTYPE PROXY_FreeBuffer(OMX_IN OMX_HANDLETYPE hComponent,
 	   unmapping/freeing, still trying to clean up as much as possible */
 	eError =
 	    RPC_UTIL_GetStride(pCompPrv->hRemoteComp, nPortIndex, &nStride);
-#ifndef TUNA_DOMX
+#ifndef OMAP_TUNA
 	if (eError == OMX_ErrorNone && nStride == LINUX_PAGE_SIZE)
 	{
 		if (pCompPrv->proxyPortBuffers[nPortIndex].proxyBufferType == BufferDescriptorVirtual2D)
@@ -1335,7 +1335,7 @@ OMX_ERRORTYPE __PROXY_SetParameter(OMX_IN OMX_HANDLETYPE hComponent,
 	RPC_OMX_ERRORTYPE eRPCError = RPC_OMX_ErrorNone;
 	PROXY_COMPONENT_PRIVATE *pCompPrv = NULL;
 	OMX_COMPONENTTYPE *hComp = (OMX_COMPONENTTYPE *) hComponent;
-#ifndef TUNA_DOMX
+#ifndef OMAP_TUNA
 	OMX_TI_PARAM_USEBUFFERDESCRIPTOR *ptBufDescParam = NULL;
 #endif
 #ifdef ENABLE_GRALLOC_BUFFERS
@@ -1377,7 +1377,7 @@ OMX_ERRORTYPE __PROXY_SetParameter(OMX_IN OMX_HANDLETYPE hComponent,
 			break;
 		}
 #endif
-#ifndef TUNA_DOMX
+#ifndef OMAP_TUNA
 		case OMX_TI_IndexUseBufferDescriptor:
 		     ptBufDescParam = (OMX_TI_PARAM_USEBUFFERDESCRIPTOR *) pParamStruct;
 		     if(ptBufDescParam->bEnabled == OMX_TRUE)
@@ -1468,7 +1468,7 @@ OMX_ERRORTYPE __PROXY_GetParameter(OMX_IN OMX_HANDLETYPE hComponent,
 	RPC_OMX_ERRORTYPE eRPCError = RPC_OMX_ErrorNone;
 	PROXY_COMPONENT_PRIVATE *pCompPrv = NULL;
 	OMX_COMPONENTTYPE *hComp = (OMX_COMPONENTTYPE *) hComponent;
-#ifndef TUNA_DOMX
+#ifndef OMAP_TUNA
 	OMX_TI_PARAM_USEBUFFERDESCRIPTOR *ptBufDescParam = NULL;
 #endif
 #ifdef USE_ION
@@ -1488,7 +1488,7 @@ OMX_ERRORTYPE __PROXY_GetParameter(OMX_IN OMX_HANDLETYPE hComponent,
 
 	switch(nParamIndex)
 	{
-#ifndef TUNA_DOMX
+#ifndef OMAP_TUNA
 		case OMX_TI_IndexUseBufferDescriptor:
 		     ptBufDescParam = (OMX_TI_PARAM_USEBUFFERDESCRIPTOR *) pParamStruct;
 		     if(pCompPrv->proxyPortBuffers[ptBufDescParam->nPortIndex].proxyBufferType == BufferDescriptorVirtual2D)
