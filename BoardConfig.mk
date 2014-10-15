@@ -46,8 +46,8 @@ USE_CAMERA_STUB := true
 -include vendor/samsung/tuna/BoardConfigVendor.mk
 
 # Default values, if not overridden else where.
-TARGET_BOARD_INFO_FILE ?= $(DEVICE_FOLDER)/board-info.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= $(DEVICE_FOLDER)/bluetooth
+TARGET_BOARD_INFO_FILE := $(DEVICE_FOLDER)/board-info.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_FOLDER)/bluetooth
 
 TARGET_BOARD_OMAP_CPU := 4460
 TARGET_CPU_ABI := armeabi-v7a

@@ -42,9 +42,6 @@ PRODUCT_PACKAGES := \
 	nfc.tuna \
 	power.tuna
 
-#PRODUCT_PACKAGES += \
-	camera.tuna
-
 PRODUCT_PACKAGES += \
 	sensors.tuna \
 	libinvensense_mpl
@@ -188,6 +185,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=320 \
 	ro.hwui.disable_scissor_opt=true
 
+# GPU producer to CPU consumer not supported
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.bq.gpu_to_cpu_unsupported=1
+
 PRODUCT_CHARACTERISTICS := nosdcard
 
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -230,21 +231,6 @@ PRODUCT_PACKAGES += \
 	libOMX.TI.DUCATI1.MISC.SAMPLE \
 	libstagefrighthw \
         libI420colorconvert \
-	libtiutils_custom
-
-#PRODUCT_PACKAGES += \
-	libdomx \
-	libOMX_Core \
-	libOMX.TI.DUCATI1.VIDEO.H264E \
-	libOMX.TI.DUCATI1.VIDEO.H264SVCE \
-	libOMX.TI.DUCATI1.VIDEO.VC1E \
-	libOMX.TI.DUCATI1.VIDEO.MPEG4E \
-	libOMX.TI.DUCATI1.VIDEO.DECODER \
-	libOMX.TI.DUCATI1.VIDEO.DECODER.secure \
-	libOMX.TI.DUCATI1.VIDEO.CAMERA \
-	libOMX.TI.DUCATI1.MISC.SAMPLE \
-	libstagefrighthw \
-	libI420colorconvert \
 	libtiutils_custom
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
