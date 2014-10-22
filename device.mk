@@ -237,6 +237,12 @@ PRODUCT_PACKAGES += \
         libI420colorconvert \
 	libtiutils_custom
 
+# WiFi stuff isn't being included in L apparently?
+PRODUCT_PACKAGES += \
+	hostapd \
+	wpa_supplicant \
+	wpa_supplicant.conf
+
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, vendor/nxp/pn544/nxp-pn544-fw-vendor.mk)
