@@ -234,7 +234,7 @@ PRODUCT_PACKAGES += \
 	libOMX.TI.DUCATI1.VIDEO.CAMERA \
 	libOMX.TI.DUCATI1.MISC.SAMPLE \
 	libstagefrighthw \
-        libI420colorconvert \
+	libI420colorconvert \
 	libtiutils_custom
 
 # WiFi stuff isn't being included in L apparently?
