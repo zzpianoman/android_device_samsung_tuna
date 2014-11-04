@@ -243,6 +243,10 @@ PRODUCT_PACKAGES += \
 	wpa_supplicant \
 	wpa_supplicant.conf
 
+# libcorkscrew is needed for some of the PVR stuff.
+PRODUCT_PACKAGES += \
+	libcorkscrew
+
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, vendor/nxp/pn544/nxp-pn544-fw-vendor.mk)
