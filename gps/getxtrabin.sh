@@ -1,1 +1,1 @@
-wget -O xtra.bin http://xtra1.gpsonextra.net/xtra.bin
+wget http://xtra1.gpsonextra.net/xtra.bin
