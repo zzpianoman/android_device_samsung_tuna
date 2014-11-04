@@ -46,8 +46,6 @@ on post-fs-data
 	mkdir /data/radio 0775 radio radio
 	mkdir /data/radio/log 0775 radio radio
 
-	symlink /system/etc/gps /data/gps
-
 	setprop vold.post_fs_data_done 1
 
 # LTE
@@ -137,6 +135,7 @@ on fs
 	chown system system /dev/an30259a_leds
 
 # for GPS
+<<<<<<< HEAD:rootdir/init.tuna.rc
 	chown root system /sys/class/sec/gps/GPS_PWR_EN/value
 	chmod 0660 /sys/class/sec/gps/GPS_PWR_EN/value
 	chown root system /sys/class/sec/gps/GPS_nRST/value
@@ -145,6 +144,14 @@ on fs
 	chmod 0600 /proc/mcspi1_cs3_ctrl
 	chown system system /system/etc/gps/xtra.bin
 	chmod 0600 /system/etc/gps/xtra.bin
+=======
+    chown root system /sys/class/sec/gps/GPS_PWR_EN/value
+    chmod 0660 /sys/class/sec/gps/GPS_PWR_EN/value
+    chown root system /sys/class/sec/gps/GPS_nRST/value
+    chmod 0660 /sys/class/sec/gps/GPS_nRST/value
+    chown system system /proc/mcspi1_cs3_ctrl
+    chmod 0600 /proc/mcspi1_cs3_ctrl
+>>>>>>> parent of 3aad99a... Experimental GPS improvements.:init.tuna.rc
 
 # ril control auto-suspend
 	chmod 0660 /sys/bus/usb/devices/usb1/power/control
