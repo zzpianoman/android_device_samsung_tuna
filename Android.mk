@@ -43,9 +43,10 @@ $(LOCAL_BUILT_MODULE):
 	$(hide) rm -rf $(SYMLINK)
 	$(hide) ln -sf $(HDCP_KEYS_FILE) $(SYMLINK)
 	$(hide) touch $@
-
+endif
 
 #Creating Gralloc SymLink
+include $(CLEAR_VARS)
 GRALLOC_SYMLINK := $(TARGET_OUT_VENDOR)/lib/hw/gralloc.$(TARGET_BOARD_PLATFORM).so
 $(GRALLOC_SYMLINK): GRALLOC_FILE := gralloc.omap$(TARGET_BOARD_OMAP_CPU).so
 $(GRALLOC_SYMLINK): $(LOCAL_INSTALLED_MODULE) $(LOCAL_PATH)/Android.mk
@@ -59,6 +60,11 @@ ALL_DEFAULT_INSTALLED_MODULES += $(GRALLOC_SYMLINK)
 # for mm/mmm
 all_modules: $(GRALLOC_SYMLINK)
 
-include $(call all-makefiles-under,$(LOCAL_PATH))
+# Google goofed Invensense with Lollipop and made this part dependent on TARGET_DEVICE is tuna.
+# TARGET_DEVICE gets set to the specific variant though, e.g. maguro or toro.
+# Rather than fork hardware/invensense, just work around it here.
+#include $(CLEAR_VARS)
+#include $(LOCAL_PATH)/../../../hardware/invensense/60xx/Android.mk
 
-endif
+#include $(CLEAR_VARS)
+include $(call all-makefiles-under,$(LOCAL_PATH))
