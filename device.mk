@@ -239,9 +239,10 @@ PRODUCT_PACKAGES += \
 	libI420colorconvert \
 	libtiutils_custom
 
-# WiFi stuff isn't being included in L apparently?
 PRODUCT_PACKAGES += \
+	libwpa_client \
 	hostapd \
+	dhcpcd.conf \
 	wpa_supplicant \
 	wpa_supplicant.conf
 
