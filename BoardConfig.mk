@@ -15,6 +15,7 @@
 #
 
 DEVICE_FOLDER := device/samsung/tuna
+WITH_DEXPREOPT := true
 
 # TI Enhancement Settings (Part 1)
 #OMAP_ENHANCEMENT := true
@@ -65,6 +66,9 @@ BOARD_KERNEL_BASE := 0x80000000
 
 TARGET_KERNEL_CONFIG := fml_tuna_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/tuna
+
+# GCC 4.8 somehow breaks the eMMC patch applied on boot-up for VYL00M eMMCs on maguro
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 
 TARGET_PREBUILT_KERNEL := $(DEVICE_FOLDER)/kernel
 
