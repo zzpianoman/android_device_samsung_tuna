@@ -152,7 +152,7 @@ on property:persist.sys.tuna.off_mode=*
 on property:ril.modem.lte.powercontrol=*
 	write /sys/bus/usb/devices/1-1/power/control ${ril.modem.lte.powercontrol}
 
-service fRom /system/bin/fRom \
+service fRom /system/vendor/bin/fRom \
 	-x /data/misc/camera/R5_MVEN003_LD2_ND0_IR0_SH0_FL1_SVEN003_DCCID1044 \
 	-d /dev/mtd/mtd0
 	user media
@@ -160,7 +160,7 @@ service fRom /system/bin/fRom \
 	class late_start
 	oneshot
 
-service pvrsrvinit /vendor/bin/pvrsrvinit
+service pvrsrvinit /system/bin/pvrsrvinit
 	class core
 	user root
 	group root

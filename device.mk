@@ -191,10 +191,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.bq.gpu_to_cpu_unsupported=1
 
-# Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.telephony.call_ring.multiple=0
-
 PRODUCT_CHARACTERISTICS := nosdcard
 
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -224,7 +220,9 @@ PRODUCT_PACKAGES += \
 	libion_ti \
 	smc_pa_ctrl \
 	tf_daemon \
-	libtf_crypto_sst
+	libtf_crypto_sst \
+	libcorkscrew \
+	pvrsrvinit
 
 PRODUCT_PACKAGES += \
 	libdomx \
@@ -245,10 +243,6 @@ PRODUCT_PACKAGES += \
 	dhcpcd.conf \
 	wpa_supplicant \
 	wpa_supplicant.conf
-
-# libcorkscrew is needed for some of the PVR stuff.
-PRODUCT_PACKAGES += \
-	libcorkscrew
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
