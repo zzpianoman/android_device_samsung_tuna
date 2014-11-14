@@ -44,6 +44,6 @@ $(LOCAL_BUILT_MODULE):
 	$(hide) ln -sf $(HDCP_KEYS_FILE) $(SYMLINK)
 	$(hide) touch $@
 
-endif
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
+endif
