@@ -4,8 +4,9 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 
+
 /dev/block/platform/omap/omap_hsmmc.0/by-name/system    /system             ext4      ro,discard                                                       wait
-/dev/block/platform/omap/omap_hsmmc.0/by-name/efs       /factory            ext4      ro                                                               wait
+/dev/block/platform/omap/omap_hsmmc.0/by-name/efs       /factory            ext4      rw                                                               wait
 /dev/block/platform/omap/omap_hsmmc.0/by-name/cache     /cache              ext4      rw,discard,noatime,nosuid,nodev,nomblk_io_submit,errors=panic    wait,check
 /dev/block/platform/omap/omap_hsmmc.0/by-name/cache     /cache              f2fs      rw,discard,nosuid,nodev,noatime,nodiratime,inline_xattr          wait,check
 /dev/block/platform/omap/omap_hsmmc.0/by-name/userdata  /data               ext4      rw,discard,noatime,nosuid,nodev,nomblk_io_submit,errors=panic    wait,nonremovable,check,encryptable=/dev/block/platform/omap/omap_hsmmc.0/by-name/metadata
