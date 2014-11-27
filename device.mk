@@ -37,7 +37,6 @@ PRODUCT_PACKAGES := \
 	hwcomposer.tuna \
 	camera.tuna \
 	lights.tuna \
-	charger \
 	charger_res_images \
 	nfc.tuna \
 	power.tuna
