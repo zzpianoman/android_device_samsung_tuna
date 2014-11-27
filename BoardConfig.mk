@@ -97,6 +97,8 @@ TARGET_BOOTLOADER_BOARD_NAME := tuna
 #	DOMX_PATH := hardware/ti/omap4xxx/domx
 #endif
 
+TARGET_TI_HWC_HDMI_DISABLED := true
+
 # Franken-domx
 TI_CUSTOM_DOMX_PATH := $(DEVICE_FOLDER)/domx
 DOMX_PATH := $(DEVICE_FOLDER)/domx
