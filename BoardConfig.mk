@@ -104,6 +104,9 @@ TI_CUSTOM_DOMX_PATH := $(DEVICE_FOLDER)/domx
 DOMX_PATH := $(DEVICE_FOLDER)/domx
 COMMON_GLOBAL_CFLAGS += -DOMAP_TUNA
 
+# For enabling some things that are OMAP_ENHANCEMENT's and are applicable to tuna...
+OMAP_TUNA := true
+
 ifdef OMAP_ENHANCEMENT
 	COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT -DTARGET_OMAP4
 endif
