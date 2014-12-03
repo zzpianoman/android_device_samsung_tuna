@@ -208,7 +208,12 @@ BOARD_SEPOLICY_UNION += \
         init.te \
         mediaserver.te \
         pvrsrvinit.te \
-        rild.te
+        rild.te \
+	bluetooth.te \
+	sdcardd.te \
+	servicemanager.te \
+	system_server.te \
+	zygote.te
 
 # TWRP
 DEVICE_RESOLUTION := 720x1280
