@@ -64,6 +64,12 @@ PRODUCT_COPY_FILES += \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
+# Default to the Speex resampler, if it exists.
+# - This allows for playback of just about any sample rate as the Speex resampler doesn't
+#   have the in <= out*2 restriction, and is of a higher quality than the default resampler.
+PRODUCT_PROPERTY_OVERRIDES := \
+	af.resampler.quality=8
+
 PRODUCT_PACKAGES += \
 	tuna_hdcp_keys
 
@@ -88,7 +94,7 @@ endif
 PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
 
-PRODUCT_PROPERTY_OVERRIDES := \
+PRODUCT_PROPERTY_OVERRIDES += \
 	wifi.interface=wlan0
 
 # Enable AAC 5.1 output
