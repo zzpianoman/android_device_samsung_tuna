@@ -16,6 +16,9 @@
 
 ANDROID_COMPILE_WITH_JACK := false
 
+# CMHW
+BOARD_HARDWARE_CLASS := $(DEVICE_FOLDER)/cmhw
+
 DEVICE_FOLDER := device/samsung/tuna
 
 # inherit from omap4
