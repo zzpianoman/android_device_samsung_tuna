@@ -37,6 +37,7 @@ __BEGIN_DECLS
 #define ID_L  (ID_SAMSUNG_BASE)
 #define ID_P  (ID_L + 1)
 #define ID_PR (ID_P + 1)
+#define ID_T  (ID_PR + 1)
 
 /*****************************************************************************/
 
