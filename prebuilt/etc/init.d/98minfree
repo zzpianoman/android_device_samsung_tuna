@@ -1,0 +1,10 @@
+#!/system/bin/sh
+
+
+
+until [ $(busybox pgrep com.android.systemui) ] ; do
+    busybox sleep 1
+done
+
+# lowmemorykiller
+echo "6144,9216,12288,24576,32768,50176" > /sys/module/lowmemorykiller/parameters/minfree

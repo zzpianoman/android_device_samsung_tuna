@@ -19,4 +19,7 @@
     <bool name="config_show_volumeRockerWake">true</bool>
     <!-- Show Expanded Desktop preference -->
     <bool name="config_show_expandedDesktop">true</bool>
+
+    <!-- Volume rocker support. Some devices do not have a volume rocker. --> 	
+    <bool name="has_volume_rocker">true</bool>
 </resources>

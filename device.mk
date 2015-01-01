@@ -60,6 +60,9 @@ PRODUCT_COPY_FILES += \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
+#AOSP bootanimation
+PRODUCT_BOOTANIMATION := $(DEVICE_FOLDER)/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
+	
 
 #PRODUCT_PROPERTY_OVERRIDES := \
 	#af.resampler.quality=8
@@ -107,6 +110,13 @@ PRODUCT_PROPERTY_OVERRIDES := \
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp
+
+# ADB authentication
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
+
+# Root access
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.root_access=3
 
 # Torch
 PRODUCT_PACKAGES += \
@@ -250,6 +260,11 @@ PRODUCT_PACKAGES += \
 	dhcpcd.conf \
 	wpa_supplicant \
 	wpa_supplicant.conf
+
+PRODUCT_COPY_FILES += \
+	device/samsung/tuna/prebuilt/etc/init.d/91fixoverlays:system/etc/init.d/91fixoverlays \
+	device/samsung/tuna/prebuilt/etc/init.d/96screendim:system/etc/init.d/96screendim \
+        device/samsung/tuna/prebuilt/etc/init.d/98minfree:system/etc/init.d/98minfree 
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 

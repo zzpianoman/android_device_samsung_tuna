@@ -1,0 +1,10 @@
+#!/system/bin/sh
+#
+# Dim LCD during boot sequence
+# 
+# 
+#
+
+echo 20 > /sys/class/backlight/s6e8aa0/brightness
+
+
