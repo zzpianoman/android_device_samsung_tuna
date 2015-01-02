@@ -22,13 +22,13 @@ on post-fs
 	# 8 - High Profile
 	setprop video.h264enc.profile 1
 
+on post-fs-data
+	mkdir /data/media 0770 media_rw media_rw
+
 	# create directory for mounting usb drives
 	chmod 0701 /mnt/media_rw
 	mkdir /mnt/media_rw/usbdisk 0775 system system
 	mkdir /storage/usbdisk 0000 system system
-
-on post-fs-data
-	mkdir /data/media 0770 media_rw media_rw
 
 	mkdir /data/smc 0770 drmrpc drmrpc
 	chown drmrpc drmrpc /data/smc/counter.bin
@@ -256,7 +256,7 @@ service bugreport /system/bin/dumpstate -d -p -B \
 	class main
 	disabled
 	oneshot
-	keycodes 114 115 116
+#	keycodes 114 115 116
 
 service battery_charger /charger
 	class charger
