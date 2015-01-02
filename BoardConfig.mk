@@ -48,8 +48,14 @@ BOARD_KERNEL_BASE := 0x80000000
 TARGET_KERNEL_CONFIG := fml_tuna_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/tuna
 
-# GCC 4.8 somehow breaks the eMMC patch applied on boot-up for VYL00M eMMCs on maguro
+# GCC 4.8 somehow breaks the eMMC patch applied on boot-up for VYL00M eMMCs on maguro.
+# While this can be worked around, I don't trust it for anything. All tuna kernel devs
+# seem to be in agreement on 4.8 being terrible for the kernel, and it's not just tuna
+# that has issues with it. GCC 4.9 is better than 4.8 at least though; so, if we're not
+# using GCC 4.9 for the kernel build, force GCC 4.7, which is rock-solid for kernels.
+ifneq ($(TARGET_GCC_VERSION_OTHER),4.9)
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
+endif
 
 TARGET_PREBUILT_KERNEL := $(DEVICE_FOLDER)/kernel
 
