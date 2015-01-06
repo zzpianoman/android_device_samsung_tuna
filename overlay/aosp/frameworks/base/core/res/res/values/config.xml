@@ -233,13 +233,14 @@
          specified -->
     <string name="default_wallpaper_component" translatable="false">com.android.phasebeam/.PhaseBeamWallpaper</string>
 
+    <!-- Boolean indicating if restoring network selection should be skipped -->
+    <!-- The restoring is handled by modem if it is true -->
+    <bool translatable="false" name="skip_restoring_network_selection">true</bool>
+
     <!-- Vibrator pattern for feedback about touching a virtual key -->
     <integer-array name="config_virtualKeyVibePattern">
         <item>10</item>
     </integer-array>
-
-    <!-- Enable translucent lockscreen-->
-    <bool name="config_enableLockScreenTranslucentDecor">true</bool>
 
     <!-- Enable WiFi display support -->
     <bool name="config_enableWifiDisplay">true</bool>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2009 The Android Open Source Project
+<!-- Copyright (C) 2014 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,13 +14,7 @@
      limitations under the License.
 -->
 
-<!-- Tuna-specific phone app resources. -->
 <resources>
-
-    <!-- Disables Voice Privacy option in the Other call settings section of Call Settings -->
-    <!-- This is CDMA-specific, and not all of our CDMA carriers support it. -->
-    <!-- Over a dozen years ago, this was already considered useless and broken. -->
-    <!-- Therefore, let's just disable it for everybody. -->
-    <bool name="config_voice_privacy_disable">true</bool>
-
+    <!-- Flag indicating if the tty is enabled -->
+    <bool name="tty_enabled">true</bool>
 </resources>
