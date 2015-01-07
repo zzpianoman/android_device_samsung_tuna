@@ -86,12 +86,12 @@ static void tuna_power_init(struct power_module *module)
 {
     struct tuna_power_module *tuna = (struct tuna_power_module *) module;
 
-    sysfs_write(CPUFREQ_INTERACTIVE "timer_rate", "20000");
+    sysfs_write(CPUFREQ_INTERACTIVE "timer_rate", "25000");
     sysfs_write(CPUFREQ_INTERACTIVE "min_sample_time", "30000");
-    sysfs_write(CPUFREQ_INTERACTIVE "hispeed_freq", "1036800");
-    sysfs_write(CPUFREQ_INTERACTIVE "target_loads", "85");
+    sysfs_write(CPUFREQ_INTERACTIVE "hispeed_freq", "729600");
+    sysfs_write(CPUFREQ_INTERACTIVE "target_loads", "90");
     sysfs_write(CPUFREQ_INTERACTIVE "go_hispeed_load", "95");
-    sysfs_write(CPUFREQ_INTERACTIVE "above_hispeed_delay", "40000");
+    sysfs_write(CPUFREQ_INTERACTIVE "above_hispeed_delay", "20000");
 
     ALOGI("Initialized successfully");
     tuna->inited = 1;
