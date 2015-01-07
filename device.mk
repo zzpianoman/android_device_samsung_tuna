@@ -225,11 +225,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	camera2.portability.force_api=1
 
-# Use awesome player for now
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.sys.media.use-awesome=true \
-	media.stagefright.use-awesome=true
-
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	e2fsck \
@@ -262,7 +257,6 @@ PRODUCT_PACKAGES += \
 	wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
-	device/samsung/tuna/prebuilt/etc/init.d/91fixoverlays:system/etc/init.d/91fixoverlays \
 	device/samsung/tuna/prebuilt/etc/init.d/96screendim:system/etc/init.d/96screendim \
         device/samsung/tuna/prebuilt/etc/init.d/98minfree:system/etc/init.d/98minfree 
 
