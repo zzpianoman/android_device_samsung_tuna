@@ -7,4 +7,4 @@ until [ $(busybox pgrep com.android.systemui) ] ; do
 done
 
 # lowmemorykiller
-echo "6144,9216,12288,24576,32768,50176" > /sys/module/lowmemorykiller/parameters/minfree
+echo "9472,11264,19456,30208,38144,65536" > /sys/module/lowmemorykiller/parameters/minfree
