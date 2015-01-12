@@ -5,6 +5,6 @@
 # 
 #
 
-echo 20 > /sys/class/backlight/s6e8aa0/brightness
+echo 40 > /sys/class/backlight/s6e8aa0/brightness
 
 
