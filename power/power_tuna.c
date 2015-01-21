@@ -33,8 +33,8 @@
 #define MAX_BUF_SZ  10
 
 /* initialize to something safe */
-static char screen_off_max_freq[MAX_BUF_SZ] = "537600";
-static char scaling_max_freq[MAX_BUF_SZ] = "1228800";
+static char screen_off_max_freq[MAX_BUF_SZ] = "525000";
+static char scaling_max_freq[MAX_BUF_SZ] = "1200000";
 
 struct tuna_power_module {
     struct power_module base;
@@ -86,12 +86,12 @@ static void tuna_power_init(struct power_module *module)
 {
     struct tuna_power_module *tuna = (struct tuna_power_module *) module;
 
-    sysfs_write(CPUFREQ_INTERACTIVE "timer_rate", "25000");
-    sysfs_write(CPUFREQ_INTERACTIVE "min_sample_time", "30000");
-    sysfs_write(CPUFREQ_INTERACTIVE "hispeed_freq", "729600");
+    sysfs_write(CPUFREQ_INTERACTIVE "timer_rate", "15000");
+    sysfs_write(CPUFREQ_INTERACTIVE "min_sample_time", "20000");
+    sysfs_write(CPUFREQ_INTERACTIVE "hispeed_freq", "920000");
     sysfs_write(CPUFREQ_INTERACTIVE "target_loads", "90");
     sysfs_write(CPUFREQ_INTERACTIVE "go_hispeed_load", "95");
-    sysfs_write(CPUFREQ_INTERACTIVE "above_hispeed_delay", "20000");
+    sysfs_write(CPUFREQ_INTERACTIVE "above_hispeed_delay", "40000");
 
     ALOGI("Initialized successfully");
     tuna->inited = 1;
