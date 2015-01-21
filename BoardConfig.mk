@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+USE_PREBUILT_CHROMIUM := true
+
 DEVICE_FOLDER := device/samsung/tuna
 
 # Hardware tunables
