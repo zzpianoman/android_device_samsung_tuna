@@ -262,6 +262,10 @@ PRODUCT_COPY_FILES += \
 	device/samsung/tuna/prebuilt/etc/init.d/96screendim:system/etc/init.d/96screendim \
         device/samsung/tuna/prebuilt/etc/init.d/98minfree:system/etc/init.d/98minfree 
 
+# DCC
+PRODUCT_PACKAGES += \
+    dumpdcc
+
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, vendor/nxp/pn544/nxp-pn544-fw-vendor.mk)
