@@ -166,7 +166,7 @@ on property:persist.sys.tuna.off_mode=*
 on property:ril.modem.lte.powercontrol=*
 	write /sys/bus/usb/devices/1-1/power/control ${ril.modem.lte.powercontrol}
 
-service dumpdcc /system/bin/dumpdcc \
+service dumpdcc /system/bin/dumpdcc
 	user media
 	group media
 	class late_start
