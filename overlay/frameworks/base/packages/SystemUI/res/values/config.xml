@@ -33,6 +33,10 @@
     <!-- The maximum number of rows in the QuickSettings -->
     <integer name="quick_settings_max_rows">5</integer>
    
+    <!-- The default tiles to display in QuickSettings -->
+    <string name="quick_settings_tiles_default" translatable="false">
+        wifi,bt,cell,airplane,rotation,flashlight,location,cast,hotspot,profiles,adb_network,nfc,compass
+    </string>
 
 </resources>
 
