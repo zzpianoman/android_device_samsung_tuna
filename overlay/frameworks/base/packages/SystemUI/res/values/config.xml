@@ -26,6 +26,12 @@
 
     <!-- The number of app icons we keep in memory -->
     <integer name="config_recents_max_icon_count">20</integer>
+
+    <!-- The number of columns in the QuickSettings -->
+    <integer name="quick_settings_num_columns">4</integer>
+
+    <!-- The maximum number of rows in the QuickSettings -->
+    <integer name="quick_settings_max_rows">5</integer>
    
 
 </resources>
