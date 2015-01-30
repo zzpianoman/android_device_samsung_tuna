@@ -53,7 +53,11 @@ extern "C" {
 #include <OMX_IVCommon.h>
 #include <OMX_Image.h>
 
+#ifndef PREBUILT_CAMERA_CALIB
+#define DCC_PATH "/data/misc/camera/"
+#else
 #define DCC_PATH "/system/vendor/camera/"
+#endif
 #define MAX_URI_LENGTH      (OMX_MAX_STRINGNAME_SIZE)
 #define MAX_ALGOAREAS       (35)
 

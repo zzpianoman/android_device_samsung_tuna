@@ -258,8 +258,10 @@ PRODUCT_PACKAGES += \
 	wpa_supplicant.conf
 
 # DCC
+ifneq ($(TARGET_PREBUILT_CAMERA_CALIB),true)
 PRODUCT_PACKAGES += \
-    dumpdcc
+	dumpdcc
+endif
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
