@@ -136,7 +136,6 @@ service dumpdcc /system/bin/dumpdcc
 	user media
 	group media
 	class late_start
-	seclabel u:r:dumpdcc:s0
 	oneshot
 
 service pvrsrvinit /system/bin/pvrsrvinit
