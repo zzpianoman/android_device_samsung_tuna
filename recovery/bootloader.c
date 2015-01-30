@@ -325,7 +325,7 @@ int write_xloader(const char* image_data,
 int write_sbl(const char* image_data,
               size_t image_size,
               const char* sbl_loc) {
-  unsigned int sbl_size = image_size - SBL_OFFSET;
+  int sbl_size = image_size - SBL_OFFSET;
   FILE* sbl = fopen(sbl_loc, "r+b");
   if (sbl == NULL) {
     fprintf(stderr, "Could not open %s\n", sbl_loc);
