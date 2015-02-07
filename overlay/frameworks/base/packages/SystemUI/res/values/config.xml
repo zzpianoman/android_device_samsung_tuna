@@ -38,8 +38,5 @@
         wifi,bt,cell,airplane,rotation,flashlight,location,cast,hotspot,profiles,adb_network,nfc,compass
     </string>
 
-    <!-- Whether to enable data switch or not -->
-    <bool name="config_enableDataSwitch">true</bool>
-
 </resources>
 
