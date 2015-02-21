@@ -72,19 +72,7 @@ on fs
 	mkdir /factory 0775 radio radio
 	mount_all /fstab.tuna
 	restorecon /dev/block/platform/omap/omap_hsmmc.0/by-name/radio
-	mount ext4 /dev/block/platform/omap/omap_hsmmc.0/by-name/efs /factory rw remount
-	restorecon /factory
-	restorecon /factory/imei/mps_code.dat
-	restorecon /factory/.nv_state
-	restorecon /factory/.nv_data.bak
-	restorecon /factory/nv_data.bin
-	restorecon /factory/nv_data.bin.md5
-	restorecon /factory/hdcp.keys
-	restorecon /factory/imei
-	restorecon /factory/wifi
-	restorecon /factory/wv.keys
-	restorecon /factory/bluetooth
-	restorecon /factory/bluetooth/bt_addr
+	restorecon_recursive /factory
 	mount ext4 /dev/block/platform/omap/omap_hsmmc.0/by-name/efs /factory ro remount
 	setprop ro.crypto.fuse_sdcard true
 
@@ -96,8 +84,7 @@ on fs
 	chmod 0660 /dev/i2c-2
 	chown media media /dev/i2c-2
 
-# pvr module
-	#insmod /system/lib/modules/pvrsrvkm_sgx540_120.ko
+# start pvr
 	start pvrsrvinit
 
 # change permissions for Tiler driver
@@ -113,18 +100,8 @@ on fs
 # change permissions for adaptive backlight settings
 	chmod 0666 /sys/class/backlight/s6e8aa0/acl_set
 
-# change permissions for ION driver
-    chmod 0777 /dev/ion
-
-# We chown/chmod /factory because mount is run as root + defaults
-	chown radio radio /factory
-	chmod 0775 /factory
-
 # add symlink for HDCP key
         symlink /factory/hdcp.keys /system/vendor/firmware/hdcp.keys
-
-# allow to modify Wifi power behaviour in terms of battery/speed at sleep time
-    chown root system sys/module/bcmdhd/parameters/uiFastWifi
 
 # nfc
     setprop ro.nfc.port "COM4"
@@ -170,7 +147,6 @@ service dumpdcc /system/bin/dumpdcc
 	user media
 	group media
 	class late_start
-	seclabel u:r:fRom:s0
 	oneshot
 
 service pvrsrvinit /system/bin/pvrsrvinit
@@ -289,7 +265,9 @@ service bugreport /system/bin/dumpstate -d -p -B \
 	oneshot
 	keycodes 114 115 116
 
-service battery_charger /charger
+service battery_charger /sbin/healthd -c
 	class charger
+	critical
+	seclabel u:r:healthd:s0
 
 
