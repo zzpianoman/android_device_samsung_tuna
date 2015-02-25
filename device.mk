@@ -61,7 +61,7 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/audio/audio_effects.conf:system/etc/audio_effects.conf \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
+	$(DEVICE_FOLDER)/configs/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 # Default to the Speex resampler, if it exists.
 # - This allows for playback of just about any sample rate as the Speex resampler doesn't
