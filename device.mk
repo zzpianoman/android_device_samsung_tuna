@@ -227,6 +227,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	camera2.portability.force_api=1
 
+# Mute phone mic through RIL instead of Audio Manager
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.telephony.legacy_mute=1
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	e2fsck \
