@@ -219,6 +219,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.notif_expand_landscape=1
 
+# Configure maximum number of recents cards to keep. Valid range: 0-98.
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.config.max_recents=10
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	e2fsck \
