@@ -231,6 +231,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.legacy_mute=1
 
+# Configure maximum number of recents cards to keep. Valid range: 0-98.
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.config.max_recents=10
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	e2fsck \
