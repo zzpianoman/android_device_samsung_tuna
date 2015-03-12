@@ -138,7 +138,7 @@
         </EncoderProfile>
 
         <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
-            <Video codec="h263"
+            <Video codec="m4v"
                    bitRate="12000000"
                    width="1920"
                    height="1080"
@@ -202,7 +202,7 @@
         </EncoderProfile>
 
         <EncoderProfile quality="timelapse1080p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
+            <Video codec="m4v"
                    bitRate="12000000"
                    width="1920"
                    height="1080"

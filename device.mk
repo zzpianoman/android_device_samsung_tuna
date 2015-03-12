@@ -235,6 +235,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
  	debug.video.crop_override=1
 
+# Use awesome player for now
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.sys.media.use-awesome=true
+
 
 # Configure maximum number of recents cards to keep. Valid range: 0-98.
 PRODUCT_PROPERTY_OVERRIDES += \
