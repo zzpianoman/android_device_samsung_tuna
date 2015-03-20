@@ -23,6 +23,8 @@ DEVICE_FOLDER := device/samsung/tuna
 
 DEVICE_PACKAGE_OVERLAYS := $(DEVICE_FOLDER)/overlay/aosp
 
+TARGET_BOARD_OUT_DIR := tuna
+
 # Setup custom omap4xxx defines
 BOARD_USE_CUSTOM_LIBION := true
 
