@@ -23,6 +23,8 @@ DEVICE_FOLDER := device/samsung/tuna
 
 DEVICE_PACKAGE_OVERLAYS := $(DEVICE_FOLDER)/overlay
 
+TARGET_BOARD_OUT_DIR := tuna
+
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
 # we do this little trick to fall back to the hdpi version
