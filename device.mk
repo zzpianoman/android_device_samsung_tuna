@@ -58,8 +58,15 @@ PRODUCT_PACKAGES += \
 	audio.usb.default \
 	audio.r_submix.default
 
+ifeq ($(TARGET_TUNA_AUDIO_HDMI),true)
 PRODUCT_COPY_FILES += \
-	$(DEVICE_FOLDER)/audio/audio_policy.conf:system/etc/audio_policy.conf \
+	$(DEVICE_FOLDER)/audio/policy/audio_policy.hdmi.conf:system/etc/audio_policy.conf
+else
+PRODUCT_COPY_FILES += \
+	$(DEVICE_FOLDER)/audio/policy/audio_policy.default.conf:system/etc/audio_policy.conf
+endif
+
+PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/audio/audio_effects.conf:system/etc/audio_effects.conf \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
