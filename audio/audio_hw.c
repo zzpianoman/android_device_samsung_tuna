@@ -1471,8 +1471,13 @@ static int start_output_stream_deep_buffer(struct tuna_stream_out *out)
         select_output_device(adev);
     }
 
-    out->write_threshold = PLAYBACK_DEEP_BUFFER_LONG_PERIOD_COUNT * DEEP_BUFFER_LONG_PERIOD_SIZE;
-    out->use_long_periods = true;
+    out->use_long_periods = adev->screen_off && !adev->active_input;
+    /* TODO: Do we need a pcm_set_avail_min here somehow? */
+    if (out->use_long_periods) {
+        out->write_threshold = PLAYBACK_DEEP_BUFFER_LONG_PERIOD_COUNT * DEEP_BUFFER_LONG_PERIOD_SIZE;
+    } else {
+        out->write_threshold = PLAYBACK_DEEP_BUFFER_SHORT_PERIOD_COUNT * DEEP_BUFFER_SHORT_PERIOD_SIZE;
+    }
 
     out->config[PCM_NORMAL] = pcm_config_mm;
     out->config[PCM_NORMAL].rate = MM_FULL_POWER_SAMPLING_RATE;
