@@ -86,6 +86,10 @@ USE_OPENGL_RENDERER := true
 # Force the screenshot path to CPU consumer
 TARGET_EXTRA_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 
+# We don't support cursor layers, which when attempting to use them,
+# results in no cursors (mouse or otherwise) displayed on the screen.
+TARGET_DISABLE_CURSOR_LAYER := true
+
 # libwvm needs this, among other things
 TARGET_EXTRA_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
