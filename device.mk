@@ -91,8 +91,8 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/rootdir/ueventd.tuna.rc:root/ueventd.tuna.rc \
 	$(DEVICE_FOLDER)/media_profiles.xml:system/etc/media_profiles.xml \
 	$(DEVICE_FOLDER)/media_codecs.xml:system/etc/media_codecs.xml \
-	$(DEVICE_FOLDER)/recovery/twrp.fstab:recovery/root/etc/twrp.fstab \
-	$(DEVICE_FOLDER)/rootdir/init.recovery.tuna.rc:root/init.recovery.tuna.rc
+	$(DEVICE_FOLDER)/recovery/twrp.fstab:recovery/root/etc/twrp.fstab
+#	$(DEVICE_FOLDER)/rootdir/init.recovery.tuna.rc:root/init.recovery.tuna.rc
 
 # Wifi
 ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
