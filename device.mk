@@ -235,6 +235,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
  	debug.video.crop_override=1
 
+# Enable/Disable AppOps control for platform-signed apps (Disabled by default)
+PRODUCT_PROPERTY_OVERRIDES += \
+ 	ro.appops.show_platform=0
 
 # Configure maximum number of recents cards to keep. Valid range: 0-98.
 PRODUCT_PROPERTY_OVERRIDES += \
