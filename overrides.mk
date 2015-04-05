@@ -1,3 +1,8 @@
+
+# Get the good APNs, not the ones in 'goldfish'.
+PRODUCT_COPY_FILES += \
+	device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
+
 # We use a 44.1kHz sampling rate on our 'fast track' audio path.
 # As such, let's make sure we get the 44.1kHz audio effects.
 

@@ -66,6 +66,7 @@ on boot
 on fs
 	mkdir /factory 0775 radio radio
 	mount_all /fstab.tuna
+	exec /system/etc/tunasetup.sh
 	restorecon /dev/block/platform/omap/omap_hsmmc.0/by-name/radio
 	restorecon_recursive /factory
 	mount ext4 /dev/block/platform/omap/omap_hsmmc.0/by-name/efs /factory ro remount

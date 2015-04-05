@@ -32,6 +32,14 @@ def FullOTA_InstallEnd(info):
   else:
     WriteRadio(info, radio_img)
 
+  # CDMA Radio
+  try:
+    radio_cdma_img = info.input_zip.read("RADIO/radio-cdma.img")
+  except KeyError:
+    print "no radio.img in target_files; skipping install"
+  else:
+    WriteRadioCdma(info, radio_cdma_img)
+
   FsSizeFix(info)
 
 def IncrementalOTA_VerifyEnd(info):
@@ -76,10 +84,28 @@ def IncrementalOTA_InstallEnd(info):
   except KeyError:
     print "no radio.img in target target_files; skipping install"
 
-  #FsSizeFix(info)
+  # CDMA Radio
+  try:
+    target_radio_cdma_img = info.target_zip.read("RADIO/radio-cdma.img")
+    try:
+      source_radio_cdma_img = info.source_zip.read("RADIO/radio-cdma.img")
+    except KeyError:
+      source_radio_cdma_img = None
 
+    if source_radio_cdma_img == target_radio_cdma_img:
+      print "radio-cdma unchanged; skipping"
+    else:
+      WriteRadioCdma(info, target_radio_cdma_img)
+  except KeyError:
+    print "no radio-cdma.img in target target_files; skipping install"
+
+  FsSizeFix(info)
+
+# It is safe to attempt to run FsSizeFix on toro(plus)
+# It simply determines everything's fine and does nothing.
 def FsSizeFix(info):
-  info.script.Print("Fixing fs_size in crypto footer...")
+  # No longer print this out, it's annoying.
+  #info.script.Print("Fixing fs_size in crypto footer...")
   info.script.AppendExtra('''assert(samsung.fs_size_fix());''')
 
 def WriteBootloader(info, bootloader_img):
@@ -119,3 +145,9 @@ def WriteRadio(info, target_radio_img, source_radio_img=None):
             "%s:%s:%d:%s:%d:%s" % (radio_type, radio_device,
                                    sf.size, sf.sha1, tf.size, tf.sha1),
             "-", tf.size, tf.sha1, sf.sha1, "radio.img.p")
+
+def WriteRadioCdma(info, radio_cdma_img):
+  common.ZipWriteStr(info.output_zip, "radio-cdma.img", radio_cdma_img)
+  info.script.Print("Writing CDMA radio...")
+  info.script.AppendExtra('''assert(samsung.update_cdma_modem(
+    package_extract_file("radio-cdma.img")));''')

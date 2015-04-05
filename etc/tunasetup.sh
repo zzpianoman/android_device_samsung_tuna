@@ -1,0 +1,195 @@
+#!/system/bin/sh
+
+# Delete files for a variant due to it being unused.
+delete_maguro_files() {
+    rm -r /system/vendor/maguro/
+    rm /system/etc/wifi/bcmdhd.maguro.cal
+    rm /system/etc/permissions/android.hardware.telephony.gsm.xml
+}
+delete_torocommon_files() {
+    rm -r /system/vendor/toro-common/
+    rm /system/etc/permissions/android.hardware.telephony.cdma.xml
+
+    # If we're removing the commong toro files, we obviously want ALL toro files removed.
+    delete_toro_files
+    delete_toroplus_files
+}
+delete_toro_files() {
+    rm -r /system/vendor/toro/
+    rm /system/etc/wifi/bcmdhd.toro.cal
+}
+delete_toroplus_files() {
+    rm -r /system/vendor/toroplus/
+    rm /system/etc/wifi/bcmdhd.toroplus.cal
+}
+
+# Move files for variants to their proper locations.
+move_maguro_files() {
+    mv /system/etc/wifi/bcmdhd.maguro.cal /system/etc/wifi/bcmdhd.cal
+    mv /system/vendor/maguro/firmware/bcm4330.hcd /system/vendor/firmware/bcm4330.hcd
+    mv /system/vendor/maguro/lib/libsecril-client.so /system/vendor/lib/libsecril-client.so
+    mv /system/vendor/maguro/lib/libsec-ril.so /system/vendor/lib/libsec-ril.so
+}
+move_torocommon_files() {
+    mv /system/vendor/toro-common/firmware/bcm4330.hcd /system/vendor/firmware/bcm4330.hcd
+    mv /system/vendor/toro-common/lib/libsecril-client.so /system/vendor/lib/libsecril-client.so
+}
+move_toro_files() {
+    mv /system/etc/wifi/bcmdhd.toro.cal /system/etc/wifi/bcmdhd.cal
+    mv /system/vendor/toro/lib/libims.so /system/vendor/lib/libims.so
+    mv /system/vendor/toro/lib/libims_jni.so /system/vendor/lib/libims_jni.so
+    mv /system/vendor/toro/lib/libsec-ril_lte.so /system/vendor/lib/libsec-ril_lte.so
+
+    mkdir -p /system/vendor/app/
+    mv /system/vendor/toro/app/BIP.kpa /system/vendor/app/BIP.apk
+    mv /system/vendor/toro/app/IMSFramework.kpa /system/vendor/app/IMSFramework.apk
+    mv /system/vendor/toro/app/RTN.kpa /system/vendor/app/RTN.apk
+
+    move_torocommon_files
+}
+move_toroplus_files() {
+    mv /system/etc/wifi/bcmdhd.toroplus.cal /system/etc/wifi/bcmdhd.cal
+    mv /system/vendor/toroplus/lib/libsec-ril_lte.so /system/vendor/lib/libsec-ril_lte.so
+
+    mkdir -p /system/vendor/app/
+    mv /system/vendor/toroplus/app/BIP.kpa /system/vendor/app/BIP.apk
+    mv /system/vendor/toroplus/app/HiddenMenu.kpa /system/vendor/app/HiddenMenu.apk
+    mv /system/vendor/toroplus/app/SDM.kpa /system/vendor/app/SDM.apk
+    mv /system/vendor/toroplus/app/SecPhone.kpa /system/vendor/app/SecPhone.apk
+
+    move_torocommon_files
+}
+
+# Setup variant-specific properties.
+# Tack them on to the end of build.prop, in addition to setting them with setprop right away.
+add_props_header() {
+    echo "\n# Properties for tuna variant: $1\n" >> /system/build.prop
+}
+setup_maguro_props() {
+    add_props_header "maguro"
+
+    setprop ro.product.device maguro
+    setprop ro.build.product maguro
+    echo "ro.product.device=maguro\n" >> /system/build.prop
+    echo "ro.build.product=maguro\n" >> /system/build.prop
+
+    setprop rild.libpath "/vendor/lib/libsec-ril.so"
+    echo "rild.libpath=/vendor/lib/libsec-ril.so\n" >> /system/build.prop
+
+    setprop telephony.lteOnCdmaDevice 0
+    echo "telephony.lteOnCdmaDevice=0\n" >> /system/build.prop
+}
+setup_torocommon_props() {
+    setprop rild.libpath "/vendor/lib/libsec-ril_lte.so"
+    echo "rild.libpath=/vendor/lib/libsec-ril_lte.so\n" >> /system/build.prop
+
+    setprop telephony.lteOnCdmaDevice 1
+    echo "telephony.lteOnCdmaDevice=1\n" >> /system/build.prop
+
+    setprop ro.ril.ecclist "112,911,#911,*911"
+    echo "ro.ril.ecclist=112,911,#911,*911\n" >> /system/build.prop
+
+    setprop ro.telephony.call_ring.multiple 0
+    echo "ro.telephony.call_ring.multiple=0\n" >> /system/build.prop
+
+    setprop ro.config.vc_call_vol_steps 7
+    echo "ro.config.vc_call_vol_steps=7\n" >> /system/build.prop
+}
+setup_toro_props() {
+    add_props_header "toro"
+
+    setprop ro.product.device toro
+    setprop ro.build.product toro
+    echo "ro.product.device=toro\n" >> /system/build.prop
+    echo "ro.build.product=toro\n" >> /system/build.prop
+
+    setup_torocommon_props
+
+    setprop ro.telephony.default_network 7
+    echo "ro.telephony.default_network=7\n" >> /system/build.prop
+
+    setprop ro.telephony.default_cdma_sub 0
+    echo "ro.telephony.default_cdma_sub=0\n" >> /system/build.prop
+
+    setprop persist.radio.imsregrequired 1
+    echo "persist.radio.imsregrequired=1\n" >> /system/build.prop
+
+    setprop persist.radio.imsallowmtsms 1
+    echo "persist.radio.imsallowmtsms=1\n" >> /system/build.prop
+
+
+    setprop ro.cdma.home.operator.numeric 311480
+    echo "ro.cdma.home.operator.numeric=311480\n" >> /system/build.prop
+
+    setprop ro.cdma.home.operator.alpha Verizon
+    echo "ro.cdma.home.operator.alpha=Verizon\n" >> /system/build.prop
+
+    setprop ro.cdma.homesystem "64,65,76,77,78,79,80,81,82,83"
+    echo "ro.cdma.homesystem=64,65,76,77,78,79,80,81,82,83\n" >> /system/build.prop
+
+    setprop ro.cdma.data_retry_config "default_randomization=2000,0,0,120000,180000,540000,960000"
+    echo "ro.cdma.data_retry_config=default_randomization=2000,0,0,120000,180000,540000,960000\n" >> /system/build.prop
+
+    setprop ro.gsm.data_retry_config "max_retries=infinite,default_randomization=2000,0,0,80000,125000,485000,905000"
+    echo "ro.gsm.data_retry_config=max_retries=infinite,default_randomization=2000,0,0,80000,125000,485000,905000\n" >> /system/build.prop
+
+    setprop ro.gsm.2nd_data_retry_config "max_retries=infinite,default_randomization=2000,0,0,80000,125000,485000,905000"
+    echo "ro.gsm.2nd_data_retry_config=max_retries=infinite,default_randomization=2000,0,0,80000,125000,485000,905000\n" >> /system/build.prop
+
+    setprop ro.cdma.otaspnumschema "SELC,1,80,99"
+    echo "ro.cdma.otaspnumschema=SELC,1,80,99\n" >> /system/build.prop
+}
+setup_toroplus_props() {
+    add_props_header "toroplus"
+
+    setprop ro.product.device toroplus
+    setprop ro.build.product toroplus
+    echo "ro.product.device=toroplus\n" >> /system/build.prop
+    echo "ro.build.product=toroplus\n" >> /system/build.prop
+
+    setup_torocommon_props
+
+    setprop ro.telephony.default_network 4
+    echo "ro.telephony.default_network=4\n" >> /system/build.prop
+
+    setprop ro.cdma.home.operator.numeric 310120
+    echo "ro.cdma.home.operator.numeric=310120\n" >> /system/build.prop
+
+    setprop ro.cdma.home.operator.alpha Sprint
+    echo "ro.cdma.home.operator.alpha=Sprint\n" >> /system/build.prop
+}
+
+
+
+# Remount system rw to allow these changes.
+mount -o remount,rw /system
+
+variant=""
+cmdline=$(cat /proc/cmdline)
+
+if [ -z "${cmdline##*I9250*}" ] ;then
+    variant="maguro"
+    move_maguro_files
+    delete_torocommon_files
+    setup_maguro_props
+elif [ -z "${cmdline##*I515*}" ] ;then
+    variant="toro"
+    move_toro_files
+    delete_maguro_files
+    delete_toroplus_files
+    setup_toro_props
+else
+    variant="toroplus"
+    move_toroplus_files
+    delete_maguro_files
+    delete_toro_files
+    setup_toroplus_props
+fi
+
+echo "Setup tuna variant: $variant"
+
+# Now that we've finished our job, delete us and remount system ro
+# Leave the file though so as to not have init complain about us not existing.
+echo "" > "/system/etc/tunasetup.sh"
+mount -o remount,ro /system
+

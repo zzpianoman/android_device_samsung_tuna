@@ -27,6 +27,7 @@
 
 #include "edify/expr.h"
 #include "bootloader.h"
+#include "update_cdma_modem.h"
 
 Value* WriteBootloaderFn(const char* name, State* state, int argc, Expr* argv[])
 {
@@ -57,6 +58,29 @@ Value* WriteBootloaderFn(const char* name, State* state, int argc, Expr* argv[])
     FreeValue(img);
     FreeValue(xloader_loc);
     FreeValue(sbl_loc);
+    return StringValue(strdup(result == 0 ? "t" : ""));
+}
+
+Value* UpdateCdmaModemFn(const char* name, State* state, int argc, Expr* argv[])
+{
+    int result = -1;
+    Value* img;
+
+    if (argc != 1) {
+        return ErrorAbort(state, "%s() expects 1 arg, got %d", name, argc);
+    }
+
+    if (ReadValueArgs(state, argv, 1, &img) < 0) {
+        return NULL;
+    }
+
+    if(img->type != VAL_BLOB) {
+      FreeValue(img);
+      return ErrorAbort(state, "%s(): argument types are incorrect", name);
+    }
+
+    result = update_cdma_modem(img->data, img->size);
+    FreeValue(img);
     return StringValue(strdup(result == 0 ? "t" : ""));
 }
 
@@ -123,5 +147,6 @@ void Register_librecovery_updater_tuna() {
     fprintf(stderr, "installing samsung updater extensions\n");
 
     RegisterFunction("samsung.write_bootloader", WriteBootloaderFn);
+    RegisterFunction("samsung.update_cdma_modem", UpdateCdmaModemFn);
     RegisterFunction("samsung.fs_size_fix", FsSizeFixFn);
 }

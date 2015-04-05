@@ -25,6 +25,14 @@ DEVICE_PACKAGE_OVERLAYS := $(DEVICE_FOLDER)/overlay/aosp
 
 TARGET_BOARD_OUT_DIR := tuna
 
+# We have 3 different variants of this device:
+# - maguro (GSM)
+# - toro (CDMA/LTE, VZW)
+# - toroplus (CDMA/LTE, SPR)
+# We need to set some stuff up based on what device we're working with.
+PRODUCT_COPY_FILES += \
+	$(DEVICE_FOLDER)/etc/tunasetup.sh:system/etc/tunasetup.sh
+
 # Setup custom omap4xxx defines
 BOARD_USE_CUSTOM_LIBION := true
 
@@ -89,8 +97,8 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/rootdir/init.tuna.usb.rc:root/init.tuna.usb.rc \
 	$(DEVICE_FOLDER)/rootdir/fstab.tuna:root/fstab.tuna \
 	$(DEVICE_FOLDER)/rootdir/ueventd.tuna.rc:root/ueventd.tuna.rc \
-	$(DEVICE_FOLDER)/media_profiles.xml:system/etc/media_profiles.xml \
-	$(DEVICE_FOLDER)/media_codecs.xml:system/etc/media_codecs.xml \
+	$(DEVICE_FOLDER)/etc/media_profiles.xml:system/etc/media_profiles.xml \
+	$(DEVICE_FOLDER)/etc/media_codecs.xml:system/etc/media_codecs.xml \
 	$(DEVICE_FOLDER)/recovery/twrp.fstab:recovery/root/etc/twrp.fstab
 #	$(DEVICE_FOLDER)/rootdir/init.recovery.tuna.rc:root/init.recovery.tuna.rc
 
@@ -100,22 +108,9 @@ PRODUCT_COPY_FILES += \
 	$(TARGET_PREBUILT_WIFI_MODULE):system/lib/modules/bcmdhd.ko
 endif
 PRODUCT_COPY_FILES += \
-	$(DEVICE_FOLDER)/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
-
-PRODUCT_PROPERTY_OVERRIDES += \
-	wifi.interface=wlan0
-
-# Enable AAC 5.1 output
-PRODUCT_PROPERTY_OVERRIDES += \
-	media.aac_51_output_enabled=true
-
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	persist.sys.usb.config=mtp
-
-# OmniTorch
-PRODUCT_PACKAGES += \
-	OmniTorch
+	$(DEVICE_FOLDER)/etc/wifi/bcmdhd.maguro.cal:system/etc/wifi/bcmdhd.maguro.cal \
+	$(DEVICE_FOLDER)/etc/wifi/bcmdhd.toro.cal:system/etc/wifi/bcmdhd.toro.cal \
+	$(DEVICE_FOLDER)/etc/wifi/bcmdhd.toroplus.cal:system/etc/wifi/bcmdhd.toroplus.cal
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -162,11 +157,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
-# Melfas touchscreen firmware
-PRODUCT_COPY_FILES += \
-	$(DEVICE_FOLDER)/mms144_ts_rev31.fw:system/vendor/firmware/mms144_ts_rev31.fw \
-	$(DEVICE_FOLDER)/mms144_ts_rev32.fw:system/vendor/firmware/mms144_ts_rev32.fw
-
 # Portrait dock image'
 # Not used anymore as far as I can tell
 #PRODUCT_COPY_FILES += \
@@ -195,19 +185,6 @@ endif
 PRODUCT_COPY_FILES += \
 	$(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.opengles.version=131072 \
-	ro.sf.lcd_density=320 \
-	ro.hwui.disable_scissor_opt=true
-
-# GPU producer to CPU consumer not supported
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.bq.gpu_to_cpu_unsupported=1
-
-# Newer camera API isn't supported.
-PRODUCT_PROPERTY_OVERRIDES += \
-	camera2.portability.force_api=1
-
 # Use awesome player for now
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.media.use-awesome=true \
@@ -232,10 +209,6 @@ PRODUCT_PACKAGES += \
 	fsck.f2fs \
 	fibmap.f2fs \
 	f2fstat
-
-# Allow dexopting system apps to /cache and not /data
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.dalvik.vm.dexopttocache=1
 
 # TI OMAP4
 PRODUCT_PACKAGES += \
@@ -272,9 +245,14 @@ PRODUCT_PACKAGES += \
 	dumpdcc
 endif
 
+# cdma is for toro and toroplus, gsm is for maguro.
+# the ones not applicable to the device will be removed on first boot-up.
+PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
+
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-$(call inherit-product-if-exists, vendor/nxp/pn544/nxp-pn544-fw-vendor.mk)
 #$(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 #$(call inherit-product-if-exists, vendor/ti/proprietary/omap4/ti-omap4-vendor.mk)
 $(call inherit-product-if-exists, vendor/samsung/tuna/device-vendor.mk)
