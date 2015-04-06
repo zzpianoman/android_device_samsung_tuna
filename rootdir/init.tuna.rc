@@ -260,7 +260,7 @@ service battery_charger /sbin/healthd -c
 	critical
 	seclabel u:r:healthd:s0
 
-service tuna_setup /system/etc/tunasetup.sh
+service tuna_setup /system/vendor/bin/tunasetup.sh
 	class main
 	user root
 	group root

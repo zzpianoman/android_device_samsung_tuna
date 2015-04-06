@@ -50,9 +50,9 @@ TARGET_KERNEL_SOURCE := kernel/samsung/tuna
 # seem to be in agreement on 4.8 being terrible for the kernel, and it's not just tuna
 # that has issues with it. GCC 4.9 is better than 4.8 at least though; so, if we're not
 # using GCC 4.9 for the kernel build, force GCC 4.7, which is rock-solid for kernels.
-#ifneq ($(TARGET_GCC_VERSION_OTHER),4.9)
-#TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
-#endif
+ifneq ($(TARGET_GCC_VERSION_OTHER),4.9)
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
+endif
 
 TARGET_PREBUILT_KERNEL := $(DEVICE_FOLDER)/kernel
 
@@ -113,6 +113,9 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 14539537408
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 12517376
 BOARD_FLASH_BLOCK_SIZE := 4096
+
+# Disable journaling on system.img to save space.
+BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
 
 #TARGET_PROVIDES_INIT_RC := true
 #TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true

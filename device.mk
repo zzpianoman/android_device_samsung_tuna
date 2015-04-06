@@ -31,7 +31,7 @@ TARGET_BOARD_OUT_DIR := tuna
 # - toroplus (CDMA/LTE, SPR)
 # We need to set some stuff up based on what device we're working with.
 PRODUCT_COPY_FILES += \
-	$(DEVICE_FOLDER)/etc/tunasetup.sh:system/etc/tunasetup.sh
+	$(DEVICE_FOLDER)/etc/tunasetup.sh:system/vendor/bin/tunasetup.sh
 
 # Setup custom omap4xxx defines
 BOARD_USE_CUSTOM_LIBION := true
@@ -78,7 +78,7 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/audio/audio_effects.conf:system/etc/audio_effects.conf \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-	$(DEVICE_FOLDER)/configs/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
+	$(DEVICE_FOLDER)/etc/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 # Default to the Speex resampler, if it exists.
 # - This allows for playback of just about any sample rate as the Speex resampler doesn't

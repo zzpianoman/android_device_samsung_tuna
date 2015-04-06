@@ -190,6 +190,5 @@ echo "Setup tuna variant: $variant"
 
 # Now that we've finished our job, delete us and remount system ro
 # Leave the file though so as to not have init complain about us not existing.
-echo "" > "/system/etc/tunasetup.sh"
+echo "" > "/system/vendor/bin/tunasetup.sh"
 mount -o remount,ro /system
-
