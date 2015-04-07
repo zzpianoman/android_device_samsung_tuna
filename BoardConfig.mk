@@ -16,6 +16,7 @@
 
 DEVICE_FOLDER := device/samsung/tuna
 WITH_DEXPREOPT := true
+WITH_DEXPREOPT_PIC := true
 
 PRODUCT_VENDOR_KERNEL_HEADERS := $(DEVICE_FOLDER)/kernel-headers
 
