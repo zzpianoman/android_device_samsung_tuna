@@ -1,5 +1,10 @@
 #!/system/bin/sh
 
+# Only run script if we haven't run it before
+if [ -e "/system/vendor/etc/.variant" ] ;then
+    exit
+fi
+
 # Delete files for a variant due to it being unused.
 delete_maguro_files() {
     rm -r /system/vendor/maguro/
@@ -63,100 +68,100 @@ move_toroplus_files() {
 # Setup variant-specific properties.
 # Tack them on to the end of build.prop, in addition to setting them with setprop right away.
 add_props_header() {
-    echo "\n# Properties for tuna variant: $1\n" >> /system/build.prop
+    echo "\n# Properties for tuna variant: $1" >> /system/build.prop
 }
 setup_maguro_props() {
     add_props_header "maguro"
 
     setprop ro.product.device maguro
     setprop ro.build.product maguro
-    echo "ro.product.device=maguro\n" >> /system/build.prop
-    echo "ro.build.product=maguro\n" >> /system/build.prop
+    echo "ro.product.device=maguro" >> /system/build.prop
+    echo "ro.build.product=maguro" >> /system/build.prop
 
     setprop rild.libpath "/vendor/lib/libsec-ril.so"
-    echo "rild.libpath=/vendor/lib/libsec-ril.so\n" >> /system/build.prop
+    echo "rild.libpath=/vendor/lib/libsec-ril.so" >> /system/build.prop
 
     setprop telephony.lteOnCdmaDevice 0
-    echo "telephony.lteOnCdmaDevice=0\n" >> /system/build.prop
+    echo "telephony.lteOnCdmaDevice=0" >> /system/build.prop
 }
 setup_torocommon_props() {
     setprop rild.libpath "/vendor/lib/libsec-ril_lte.so"
-    echo "rild.libpath=/vendor/lib/libsec-ril_lte.so\n" >> /system/build.prop
+    echo "rild.libpath=/vendor/lib/libsec-ril_lte.so" >> /system/build.prop
 
     setprop telephony.lteOnCdmaDevice 1
-    echo "telephony.lteOnCdmaDevice=1\n" >> /system/build.prop
+    echo "telephony.lteOnCdmaDevice=1" >> /system/build.prop
 
     setprop ro.ril.ecclist "112,911,#911,*911"
-    echo "ro.ril.ecclist=112,911,#911,*911\n" >> /system/build.prop
+    echo "ro.ril.ecclist=112,911,#911,*911" >> /system/build.prop
 
     setprop ro.telephony.call_ring.multiple 0
-    echo "ro.telephony.call_ring.multiple=0\n" >> /system/build.prop
+    echo "ro.telephony.call_ring.multiple=0" >> /system/build.prop
 
     setprop ro.config.vc_call_vol_steps 7
-    echo "ro.config.vc_call_vol_steps=7\n" >> /system/build.prop
+    echo "ro.config.vc_call_vol_steps=7" >> /system/build.prop
 }
 setup_toro_props() {
     add_props_header "toro"
 
     setprop ro.product.device toro
     setprop ro.build.product toro
-    echo "ro.product.device=toro\n" >> /system/build.prop
-    echo "ro.build.product=toro\n" >> /system/build.prop
+    echo "ro.product.device=toro" >> /system/build.prop
+    echo "ro.build.product=toro" >> /system/build.prop
 
     setup_torocommon_props
 
     setprop ro.telephony.default_network 7
-    echo "ro.telephony.default_network=7\n" >> /system/build.prop
+    echo "ro.telephony.default_network=7" >> /system/build.prop
 
     setprop ro.telephony.default_cdma_sub 0
-    echo "ro.telephony.default_cdma_sub=0\n" >> /system/build.prop
+    echo "ro.telephony.default_cdma_sub=0" >> /system/build.prop
 
     setprop persist.radio.imsregrequired 1
-    echo "persist.radio.imsregrequired=1\n" >> /system/build.prop
+    echo "persist.radio.imsregrequired=1" >> /system/build.prop
 
     setprop persist.radio.imsallowmtsms 1
-    echo "persist.radio.imsallowmtsms=1\n" >> /system/build.prop
+    echo "persist.radio.imsallowmtsms=1" >> /system/build.prop
 
 
     setprop ro.cdma.home.operator.numeric 311480
-    echo "ro.cdma.home.operator.numeric=311480\n" >> /system/build.prop
+    echo "ro.cdma.home.operator.numeric=311480" >> /system/build.prop
 
     setprop ro.cdma.home.operator.alpha Verizon
-    echo "ro.cdma.home.operator.alpha=Verizon\n" >> /system/build.prop
+    echo "ro.cdma.home.operator.alpha=Verizon" >> /system/build.prop
 
     setprop ro.cdma.homesystem "64,65,76,77,78,79,80,81,82,83"
-    echo "ro.cdma.homesystem=64,65,76,77,78,79,80,81,82,83\n" >> /system/build.prop
+    echo "ro.cdma.homesystem=64,65,76,77,78,79,80,81,82,83" >> /system/build.prop
 
     setprop ro.cdma.data_retry_config "default_randomization=2000,0,0,120000,180000,540000,960000"
-    echo "ro.cdma.data_retry_config=default_randomization=2000,0,0,120000,180000,540000,960000\n" >> /system/build.prop
+    echo "ro.cdma.data_retry_config=default_randomization=2000,0,0,120000,180000,540000,960000" >> /system/build.prop
 
     setprop ro.gsm.data_retry_config "max_retries=infinite,default_randomization=2000,0,0,80000,125000,485000,905000"
-    echo "ro.gsm.data_retry_config=max_retries=infinite,default_randomization=2000,0,0,80000,125000,485000,905000\n" >> /system/build.prop
+    echo "ro.gsm.data_retry_config=max_retries=infinite,default_randomization=2000,0,0,80000,125000,485000,905000" >> /system/build.prop
 
     setprop ro.gsm.2nd_data_retry_config "max_retries=infinite,default_randomization=2000,0,0,80000,125000,485000,905000"
-    echo "ro.gsm.2nd_data_retry_config=max_retries=infinite,default_randomization=2000,0,0,80000,125000,485000,905000\n" >> /system/build.prop
+    echo "ro.gsm.2nd_data_retry_config=max_retries=infinite,default_randomization=2000,0,0,80000,125000,485000,905000" >> /system/build.prop
 
     setprop ro.cdma.otaspnumschema "SELC,1,80,99"
-    echo "ro.cdma.otaspnumschema=SELC,1,80,99\n" >> /system/build.prop
+    echo "ro.cdma.otaspnumschema=SELC,1,80,99" >> /system/build.prop
 }
 setup_toroplus_props() {
     add_props_header "toroplus"
 
     setprop ro.product.device toroplus
     setprop ro.build.product toroplus
-    echo "ro.product.device=toroplus\n" >> /system/build.prop
-    echo "ro.build.product=toroplus\n" >> /system/build.prop
+    echo "ro.product.device=toroplus" >> /system/build.prop
+    echo "ro.build.product=toroplus" >> /system/build.prop
 
     setup_torocommon_props
 
     setprop ro.telephony.default_network 4
-    echo "ro.telephony.default_network=4\n" >> /system/build.prop
+    echo "ro.telephony.default_network=4" >> /system/build.prop
 
     setprop ro.cdma.home.operator.numeric 310120
-    echo "ro.cdma.home.operator.numeric=310120\n" >> /system/build.prop
+    echo "ro.cdma.home.operator.numeric=310120" >> /system/build.prop
 
     setprop ro.cdma.home.operator.alpha Sprint
-    echo "ro.cdma.home.operator.alpha=Sprint\n" >> /system/build.prop
+    echo "ro.cdma.home.operator.alpha=Sprint" >> /system/build.prop
 }
 
 
@@ -186,9 +191,9 @@ else
     setup_toroplus_props
 fi
 
-echo "Setup tuna variant: $variant"
+# Store a file indicating we've run and what variant we set up.
+echo "$variant" > /system/vendor/etc/.variant
 
-# Now that we've finished our job, delete us and remount system ro
-# Leave the file though so as to not have init complain about us not existing.
-echo "" > "/system/vendor/bin/tunasetup.sh"
+# Now that we've finished our job, remount system ro and reboot
 mount -o remount,ro /system
+reboot
