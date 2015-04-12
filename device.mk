@@ -245,6 +245,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.config.max_recents=10
 
+# Disable Appops su (#) indicator in statusbar
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.appops.su_indicator=0
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	e2fsck \
