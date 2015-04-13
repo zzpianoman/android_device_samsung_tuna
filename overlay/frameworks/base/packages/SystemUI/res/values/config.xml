@@ -21,22 +21,7 @@
      for different hardware and product builds. -->
 <resources>
 
-    <!-- The number of app thumbnails we keep in memory -->
-    <integer name="config_recents_max_thumbnail_count">5</integer>
-
-    <!-- The number of app icons we keep in memory -->
-    <integer name="config_recents_max_icon_count">10</integer>
-
-    <!-- The number of columns in the QuickSettings -->
-    <integer name="quick_settings_num_columns">4</integer>
-
-    <!-- The maximum number of rows in the QuickSettings -->
-    <integer name="quick_settings_max_rows">5</integer>
    
-    <!-- The default tiles to display in QuickSettings -->
-    <string name="quick_settings_tiles_default" translatable="false">
-        wifi,bt,cell,airplane,rotation,flashlight,location,cast,hotspot,profiles,adb_network,nfc,compass
-    </string>
 
 </resources>
 
