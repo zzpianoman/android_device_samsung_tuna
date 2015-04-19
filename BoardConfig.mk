@@ -88,9 +88,6 @@ TARGET_EXTRA_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 # results in no cursors (mouse or otherwise) displayed on the screen.
 TARGET_DISABLE_CURSOR_LAYER := true
 
-# libwvm needs this, among other things
-TARGET_EXTRA_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
-
 # set if the target supports FBIO_WAITFORVSYNC
 TARGET_HAS_WAITFORVSYNC := true
 
@@ -114,6 +111,8 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 14539537408
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 12517376
 BOARD_FLASH_BLOCK_SIZE := 4096
+
+BOARD_CHARGER_BACKLIGHT_PATH := /sys/class/backlight/s6e8aa0/brightness
 
 # Disable journaling on system.img to save space.
 BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
@@ -179,5 +178,5 @@ TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/usb-otg"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "usb-otg"
 TW_MAX_BRIGHTNESS := 255
-TW_BRIGHTNESS_PATH := /sys/devices/omapdss/display0/backlight/s6e8aa0/brightness
+TW_BRIGHTNESS_PATH := /sys/class/backlight/s6e8aa0/brightness
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/platform/omap/omap_temp_sensor.0/temperature
