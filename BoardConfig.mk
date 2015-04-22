@@ -52,6 +52,10 @@ TARGET_FPU_VARIANT := neon-fp16
 BOARD_KERNEL_BASE := 0x80000000
 # BOARD_KERNEL_CMDLINE :=
 
+# Custom Toolchains
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
+TARGET_GCC_VERSION_EXP := linaro-4.8
+
 # Inline kernel building
 TARGET_KERNEL_CONFIG := cm_tuna_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/tuna
