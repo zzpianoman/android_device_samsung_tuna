@@ -218,6 +218,10 @@ PRODUCT_PACKAGES += \
 	fibmap.f2fs \
 	f2fstat
 
+# Display blank service
+PRODUCT_COPY_FILES += \
+	device/samsung/tuna/prebuilt/xbin/displayblank:system/xbin/displayblank 
+
 # DCC
 PRODUCT_PACKAGES += \
 	dumpdcc

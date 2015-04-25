@@ -43,6 +43,7 @@ on boot
     # Prevents permission denied error for telephony
     chmod 0644 /proc/cmdline
 
+
 on fs
     mkdir /factory 0775 radio radio
     mkdir /tee 0770 drmrpc drmrpc
@@ -101,6 +102,9 @@ on fs
     # ril control auto-suspend
     chmod 0660 /sys/bus/usb/devices/usb1/power/control
     chown radio radio /sys/bus/usb/devices/usb1/power/control
+
+    # start displayblanking service
+	start displayblank
 
 on charger
     mount ext4 /dev/block/platform/omap/omap_hsmmc.0/by-name/system /system ro
@@ -246,6 +250,7 @@ on property:init.tee_fs.ready=true
 on property:init.svc.tee_fs_setup=stopped
     start tuna_setup
 
+
 service tuna_setup /system/vendor/bin/tunasetup.sh
     class core
     user root
@@ -270,6 +275,13 @@ service tuna_recovery /system/bin/install-recovery.sh
     seclabel u:r:install_recovery:s0
     disabled
     oneshot
+
+service displayblank /system/xbin/displayblank
+	class main
+	user root
+	group root
+	disabled
+	oneshot
 
 # Allow writing to the kernel trace log. Enabling tracing still requires root.
 on property:ro.debuggable=1
