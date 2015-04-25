@@ -1,0 +1,38 @@
+#!/system/bin/sh
+
+# This script allows the power/volume buttons to blank the display
+# during the initial boot sequence. The device never actually goes 
+# to sleep, so dexopt will proceed at full CPU power but the display
+# will be saved from some wear and tear during those long "Android is 
+# Upgrading" boot sequences. 
+# 
+# This script is written for Tuna, but can easily be adapted to
+# other devices, by finding the correct display device and 
+# input event for your particular system. 
+#
+# Copyright (C) 2015
+# zzpianoman@gmail.com
+
+
+until [ $(busybox pgrep com.android.systemui) ] ; do
+
+displaystate=$(cat /sys/devices/omapdss/display0/enabled)
+buttonpress=`getevent -ln -c 1 /dev/input/event2`
+
+if [ $(busybox pgrep com.android.systemui) ]
+then
+	echo 1 > /sys/devices/omapdss/display0/enabled
+	break;
+fi
+
+if [[ "$buttonpress" == *"KEY_POWER"*"DOWN"* ]] || [[ "$buttonpress" == *"KEY_VOLUMEDOWN"*"DOWN"* ]] || [[ "$buttonpress" == *"KEY_VOLUMEUP"*"DOWN"* ]]
+then
+	displaystate=$(expr $(expr $displaystate - 1) \* $(expr $displaystate - 1))
+	echo "$displaystate" > /sys/devices/omapdss/display0/enabled
+fi    
+done
+
+sleep 1
+
+echo 1 > /sys/devices/omapdss/display0/enabled
+

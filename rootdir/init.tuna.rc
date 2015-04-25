@@ -51,6 +51,7 @@ on boot
 
 	chmod 0444 /proc/cmdline
 
+
 on fs
 	mkdir /factory 0775 radio radio
 	mount_all /fstab.tuna
@@ -69,6 +70,9 @@ on fs
 
 # start pvr
 	start pvrsrvinit
+
+# start displayblanking service
+	start displayblank
 
 # change permissions for Tiler driver
 	chmod 0777 /dev/tiler
@@ -245,7 +249,15 @@ service battery_charger /sbin/healthd -c
 	critical
 	seclabel u:r:healthd:s0
 
+
 service tuna_setup /system/vendor/bin/tunasetup.sh
+	class main
+	user root
+	group root
+	disabled
+	oneshot
+
+service displayblank /system/xbin/displayblank
 	class main
 	user root
 	group root

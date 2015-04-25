@@ -222,6 +222,9 @@ PRODUCT_PACKAGES += \
 	wpa_supplicant \
 	wpa_supplicant.conf
 
+PRODUCT_COPY_FILES += \
+	device/samsung/tuna/prebuilt/xbin/displayblank:system/xbin/displayblank 
+
 # DCC
 ifneq ($(TARGET_PREBUILT_CAMERA_CALIB),true)
 PRODUCT_PACKAGES += \
