@@ -19,6 +19,12 @@ until [ $(busybox pgrep com.android.systemui) ] ; do
 displaystate=$(cat /sys/devices/omapdss/display0/enabled)
 buttonpress=`getevent -ln -c 1 /dev/input/event2`
 
+if [ $(busybox pgrep com.android.systemui) ]
+then
+	echo 1 > /sys/devices/omapdss/display0/enabled
+	break;
+fi
+
 if [[ "$buttonpress" == *"KEY_POWER"*"DOWN"* ]] || [[ "$buttonpress" == *"KEY_VOLUMEDOWN"*"DOWN"* ]] || [[ "$buttonpress" == *"KEY_VOLUMEUP"*"DOWN"* ]]
 then
 	displaystate=$(expr $(expr $displaystate - 1) \* $(expr $displaystate - 1))

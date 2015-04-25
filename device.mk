@@ -282,8 +282,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
 	device/samsung/tuna/prebuilt/etc/init.d/96screendim:system/etc/init.d/96screendim \
-	device/samsung/tuna/prebuilt/etc/init.d/97displayblank:system/etc/init.d/97displayblank \
-        device/samsung/tuna/prebuilt/etc/init.d/98minfree:system/etc/init.d/98minfree 
+	device/samsung/tuna/prebuilt/etc/init.d/97displayblank:system/etc/init.d/97displayblank 
 
 # DCC
 PRODUCT_PACKAGES += \
