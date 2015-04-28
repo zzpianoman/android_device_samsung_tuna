@@ -265,10 +265,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	pvrsrvinit 
 
-# Allow dexopting system apps to /cache and not /data
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.dalvik.vm.dexopttocache=1
-
 # Enable KSM by default
 #PRODUCT_PROPERTY_OVERRIDES += \
 	#ro.ksm.default=1
