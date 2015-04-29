@@ -234,6 +234,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.legacy_mute=1
 
+# Since we only have 1 SIM, make sure this is obvious
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.telephony.sim.count=1
+
 # Crop override for video encoder
 PRODUCT_PROPERTY_OVERRIDES += \
  	debug.video.crop_override=1
