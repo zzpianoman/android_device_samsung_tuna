@@ -238,10 +238,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.sim.count=1
 
-# Crop override for video encoder
-PRODUCT_PROPERTY_OVERRIDES += \
- 	debug.video.crop_override=1
-
 # Enable/Disable AppOps control for platform-signed apps (Disabled by default)
 PRODUCT_PROPERTY_OVERRIDES += \
  	ro.appops.show_platform=0
