@@ -21,6 +21,8 @@
 
 DEVICE_FOLDER := device/samsung/tuna
 
+$(call inherit-product, hardware/ti/omap4/omap4.mk)
+
 DEVICE_PACKAGE_OVERLAYS := $(DEVICE_FOLDER)/overlay/aosp
 
 TARGET_BOARD_OUT_DIR := tuna
@@ -43,9 +45,8 @@ BOARD_USE_CUSTOM_LIBION := true
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-PRODUCT_PACKAGES := \
-	hwcomposer.tuna \
-	camera.tuna \
+PRODUCT_PACKAGES += \
+	camera.omap4 \
 	lights.tuna \
 	charger_res_images \
 	nfc.tuna \
@@ -54,10 +55,6 @@ PRODUCT_PACKAGES := \
 PRODUCT_PACKAGES += \
 	sensors.tuna \
 	libinvensense_mpl
-
-#symlinks
-PRODUCT_PACKAGES += \
-	libion.so
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -210,28 +207,6 @@ PRODUCT_PACKAGES += \
 	fibmap.f2fs \
 	f2fstat
 
-# TI OMAP4
-PRODUCT_PACKAGES += \
-	libion_ti \
-	smc_pa_ctrl \
-	tf_daemon \
-	libtf_crypto_sst \
-	libcorkscrew \
-	pvrsrvinit
-
-PRODUCT_PACKAGES += \
-	libdomx \
-	libOMX_Core \
-	libOMX.TI.DUCATI1.VIDEO.H264E \
-	libOMX.TI.DUCATI1.VIDEO.MPEG4E \
-	libOMX.TI.DUCATI1.VIDEO.DECODER \
-	libOMX.TI.DUCATI1.VIDEO.DECODER.secure \
-	libOMX.TI.DUCATI1.VIDEO.CAMERA \
-	libOMX.TI.DUCATI1.MISC.SAMPLE \
-	libstagefrighthw \
-	libI420colorconvert \
-	libtiutils_$(TARGET_BOOTLOADER_BOARD_NAME)
-
 PRODUCT_PACKAGES += \
 	libwpa_client \
 	hostapd \
@@ -253,7 +228,6 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-#$(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 #$(call inherit-product-if-exists, vendor/ti/proprietary/omap4/ti-omap4-vendor.mk)
 $(call inherit-product-if-exists, vendor/samsung/tuna/tuna-vendor.mk)
 
