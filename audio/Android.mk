@@ -26,6 +26,9 @@ LOCAL_C_INCLUDES += \
 LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa libaudioutils libdl
 LOCAL_MODULE_TAGS := optional
 
+# A lot of audio-related things use ARM over Thumb, let's do the same here.
+LOCAL_ARM_MODE := arm
+
 ifeq ($(TARGET_TUNA_AUDIO_FORCE_SAMPLE_RATE),)
 LOCAL_CFLAGS += -DUSE_VARIABLE_SAMPLING_RATE
 else
