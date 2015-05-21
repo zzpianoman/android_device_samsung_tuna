@@ -10,10 +10,15 @@ ro.hwui.disable_scissor_opt=true
 
 ro.bq.gpu_to_cpu_unsupported=1
 
+# We don't support the new camera API.
 camera2.portability.force_api=1
 
 wifi.interface=wlan0
 
 media.aac_51_output_enabled=true
 
+# Default to ADB access, for now.
 persist.sys.usb.config=mtp,adb
+
+# Avoids retrying for an EGL config w/o EGL_SWAP_BEHAVIOR_PRESERVED
+debug.hwui.render_dirty_regions=false
