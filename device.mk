@@ -115,13 +115,6 @@ PRODUCT_PROPERTY_OVERRIDES := \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp
 
-# ADB authentication
-ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
-
-# Root access
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.root_access=3
-
 # Torch
 PRODUCT_PACKAGES += \
 	Torch
