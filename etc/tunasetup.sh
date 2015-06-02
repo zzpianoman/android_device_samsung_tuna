@@ -32,12 +32,10 @@ delete_toroplus_files() {
 move_maguro_files() {
     mv /system/etc/wifi/bcmdhd.maguro.cal /system/etc/wifi/bcmdhd.cal
     mv /system/vendor/maguro/firmware/bcm4330.hcd /system/vendor/firmware/bcm4330.hcd
-    mv /system/vendor/maguro/lib/libsecril-client.so /system/vendor/lib/libsecril-client.so
     mv /system/vendor/maguro/lib/libsec-ril.so /system/vendor/lib/libsec-ril.so
 }
 move_torocommon_files() {
     mv /system/vendor/toro-common/firmware/bcm4330.hcd /system/vendor/firmware/bcm4330.hcd
-    mv /system/vendor/toro-common/lib/libsecril-client.so /system/vendor/lib/libsecril-client.so
 }
 move_toro_files() {
     mv /system/etc/wifi/bcmdhd.toro.cal /system/etc/wifi/bcmdhd.cal
