@@ -56,6 +56,10 @@ PRODUCT_PACKAGES += \
 	audio.usb.default \
 	audio.r_submix.default
 
+# RIL
+PRODUCT_PACKAGES += \
+	libsecril-client
+
 PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
 	$(DEVICE_FOLDER)/prebuilt/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf \
