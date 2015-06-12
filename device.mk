@@ -206,6 +206,10 @@ PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory
 
+# Expand Notification Shade in landscape mode to fill display width.
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.notif_expand_landscape=1
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	e2fsck \
