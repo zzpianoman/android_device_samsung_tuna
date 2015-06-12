@@ -239,6 +239,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.config.max_recents=10
 
+# Expand Notification Shade in landscape mode to fill display width.
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.notif_expand_landscape=1
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	e2fsck \
