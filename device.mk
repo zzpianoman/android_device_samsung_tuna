@@ -215,6 +215,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	pvrsrvinit 
 
+# Expand Notification Shade in landscape mode to fill display width.
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.notif_expand_landscape=1
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	e2fsck \
