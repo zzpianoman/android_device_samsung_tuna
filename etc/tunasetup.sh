@@ -30,12 +30,19 @@ delete_toroplus_files() {
 
 # Move files for variants to their proper locations.
 move_maguro_files() {
+    mkdir -p /system/vendor/etc
     mv /system/etc/wifi/bcmdhd.maguro.cal /system/etc/wifi/bcmdhd.cal
+    mv /system/vendor/maguro/etc/sirfgps.conf /system/vendor/etc/sirfgps.conf
     mv /system/vendor/maguro/firmware/bcm4330.hcd /system/vendor/firmware/bcm4330.hcd
+    mv /system/vendor/maguro/lib/hw/gps.omap4.so /system/vendor/lib/hw/gps.omap4.so
     mv /system/vendor/maguro/lib/libsec-ril.so /system/vendor/lib/libsec-ril.so
 }
 move_torocommon_files() {
+    mkdir -p /system/vendor/etc
+    mv /system/vendor/toro-common/etc/sirfgps.conf /system/vendor/etc/sirfgps.conf
     mv /system/vendor/toro-common/firmware/bcm4330.hcd /system/vendor/firmware/bcm4330.hcd
+    mv /system/vendor/toro-common/lib/hw/gps.omap4.so /system/vendor/lib/hw/gps.omap4.so
+    mv /system/vendor/toro-common/lib/lib_gsd4t.so /system/vendor/lib/lib_gsd4t.so
 }
 move_toro_files() {
     mv /system/etc/wifi/bcmdhd.toro.cal /system/etc/wifi/bcmdhd.cal
