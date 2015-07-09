@@ -227,10 +227,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	camera2.portability.force_api=1
 
-# Mute phone mic through RIL instead of Audio Manager
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.telephony.legacy_mute=1
-
 # Since we only have 1 SIM, make sure this is obvious
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.sim.count=1
