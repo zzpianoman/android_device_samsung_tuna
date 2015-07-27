@@ -242,6 +242,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.notif_expand_landscape=1
 
+# Memory management tweaks.
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.config.low_ram=true \
+        ro.config.low_ram_hide=true \
+        persist.sys.force_highendgfx=true \
+        ro.config.max_starting_bg=4
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	e2fsck \
