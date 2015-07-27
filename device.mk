@@ -281,6 +281,11 @@ PRODUCT_COPY_FILES += \
 	device/samsung/tuna/prebuilt/etc/init.d/96screendim:system/etc/init.d/96screendim \
 	device/samsung/tuna/prebuilt/xbin/displayblank:system/xbin/displayblank 
 
+# sysctl tweaks
+PRODUCT_COPY_FILES += \
+	device/samsung/tuna/prebuilt/etc/init.d/15sysctl:system/etc/init.d/15sysctl \
+	device/samsung/tuna/prebuilt/etc/sysctl.conf:system/etc/sysctl.conf 
+
 # DCC
 PRODUCT_PACKAGES += \
     dumpdcc
