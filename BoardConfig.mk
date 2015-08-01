@@ -53,7 +53,7 @@ BOARD_KERNEL_BASE := 0x80000000
 # BOARD_KERNEL_CMDLINE :=
 
 # Custom Toolchains
-# TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 # TARGET_GCC_VERSION_EXP := linaro-4.8
 
 # Inline kernel building
@@ -149,8 +149,7 @@ BOARD_SEPOLICY_UNION += \
 	file_contexts \
 	init.te \
 	mediaserver.te \
-	pvrsrvinit.te \
-	rild.te 
+	pvrsrvinit.te 
 
 # Recovery
 RECOVERY_FSTAB_VERSION := 2
