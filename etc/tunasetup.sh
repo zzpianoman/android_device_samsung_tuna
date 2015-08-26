@@ -115,8 +115,8 @@ setup_toro_props() {
 
     setup_torocommon_props
 
-    setprop ro.telephony.default_network 7
-    echo "ro.telephony.default_network=7" >> /system/build.prop
+    setprop ro.telephony.default_network 8
+    echo "ro.telephony.default_network=8" >> /system/build.prop
 
     setprop ro.telephony.default_cdma_sub 0
     echo "ro.telephony.default_cdma_sub=0" >> /system/build.prop
