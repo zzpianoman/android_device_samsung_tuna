@@ -15,35 +15,18 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Bug in RIL. It believes 7 is CDMA/LTE/EVDO even though that contradicts ril.h -->
     <string name="network_lte" translatable="false">4G/LTE</string>
     <string name="network_3G" translatable="false">3G/CDMA</string>
 
-    <string-array name="preferred_network_mode_choices" translatable="false">
-        <item>@string/network_lte</item>
-        <item>@string/network_3G</item>
-    </string-array>
-    <string-array name="preferred_network_mode_values" translatable="false">
-        <item>"7"</item>
-        <item>"4"</item>
-    </string-array>
-
-    <!-- Added in 5.1 -->
-    <string-array name="preferred_network_mode_choices_world_mode" translatable="false">
-        <item>@string/network_lte</item>
-        <item>@string/network_3G</item>
-    </string-array>
-    <string-array name="preferred_network_mode_values_world_mode" translatable="false">
-        <item>"7"</item>
-        <item>"4"</item>
-    </string-array>
+    <!-- toro is in no way a "world phone" -->
+    <string name="config_world_mode" translatable="false">false</string>
 
     <string-array name="enabled_networks_cdma_choices" translatable="false">
         <item>@string/network_lte</item>
         <item>@string/network_3G</item>
     </string-array>
     <string-array name="enabled_networks_cdma_values" translatable="false">
-        <item>"7"</item>
+        <item>"8"</item>
         <item>"4"</item>
     </string-array>
 </resources>
