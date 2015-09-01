@@ -65,12 +65,16 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/prebuilt/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-	frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml
+	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 #AOSP bootanimation
-PRODUCT_BOOTANIMATION := $(DEVICE_FOLDER)/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
-	
+PRODUCT_COPY_FILES += \
+        $(DEVICE_FOLDER)/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
+
+#World APNs 
+PRODUCT_COPY_FILES += \
+        $(DEVICE_FOLDER)/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
+
 
 #PRODUCT_PROPERTY_OVERRIDES := \
 	#af.resampler.quality=8
@@ -243,10 +247,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.notif_expand_landscape=1
 
+# Expand Notification Shade in landscape mode to fill display width.
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.config.lowram_hide_apps=com.google.android.GoogleCamera
+
 # Memory management tweaks.
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.config.low_ram=true \
-        ro.config.low_ram_hide=true \
         persist.sys.force_highendgfx=true \
         ro.config.max_starting_bg=4
 
