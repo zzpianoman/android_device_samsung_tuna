@@ -37,8 +37,7 @@ PRODUCT_PACKAGES := \
 	lights.tuna \
 	nfc.tuna \
 	power.tuna \
-	audio.primary.tuna \
-	memtrack.omap4
+	audio.primary.tuna
 
 # Sensors
 PRODUCT_PACKAGES += \
