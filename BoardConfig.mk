@@ -48,6 +48,9 @@ endif
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOOTLOADER_BOARD_NAME := tuna
 
+# We're now a unified build, but this wasn't always the case.
+TARGET_OTA_ASSERT_DEVICE := tuna,maguro,toro,toroplus
+
 TARGET_TI_HWC_HDMI_DISABLED := true
 
 # Franken-domx

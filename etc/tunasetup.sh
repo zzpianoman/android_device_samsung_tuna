@@ -15,7 +15,7 @@ delete_torocommon_files() {
     rm -r /system/vendor/toro-common/
     rm /system/etc/permissions/android.hardware.telephony.cdma.xml
 
-    # If we're removing the commong toro files, we obviously want ALL toro files removed.
+    # If we're removing the common toro files, we obviously want ALL toro files removed.
     delete_toro_files
     delete_toroplus_files
 }
