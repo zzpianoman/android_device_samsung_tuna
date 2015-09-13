@@ -243,10 +243,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.notif_expand_landscape=1
 
+# Hide low_ram flag from Google Camera
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.config.lowram_hide_apps=com.google.android.GoogleCamera
+
 # Memory management tweaks.
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.config.low_ram=true \
-        ro.config.low_ram_hide=true \
         persist.sys.force_highendgfx=true \
         ro.config.max_starting_bg=4
 
