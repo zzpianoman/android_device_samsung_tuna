@@ -119,14 +119,6 @@ BOARD_INVENSENSE_APPLY_COMPASS_NOISE_FILTER := true
 BOARD_SEPOLICY_DIRS += \
 	$(DEVICE_FOLDER)/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-	genfs_contexts \
-	file_contexts \
-	init.te \
-	mediaserver.te \
-	pvrsrvinit.te \
-	rild.te
-
 # TWRP
 TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
