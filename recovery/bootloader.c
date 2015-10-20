@@ -158,9 +158,8 @@ int get_xloader_offset() {
 }
 
 int write_pit_partition_table(const char* image_data,
-                              size_t image_size) {
+                              size_t image_size __unused) {
   int written = 0;
-  int close_status = 0;
   int to_write;
   const char* curr;
 
@@ -270,7 +269,7 @@ int write_pit_partition_table(const char* image_data,
 }
 
 int write_xloader(const char* image_data,
-                  size_t image_size,
+                  size_t image_size __unused,
                   const char* xloader_loc) {
   int xloader_offset = get_xloader_offset();
 
