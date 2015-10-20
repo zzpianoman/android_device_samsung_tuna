@@ -14,7 +14,7 @@ LOCAL_SHARED_LIBRARIES := \
     libcutils \
     libhardware_legacy
 
-LOCAL_CFLAGS :=
+LOCAL_CFLAGS := -Wall -Werror
 
 ifeq ($(BOARD_MODEM_TYPE),xmm7260)
 LOCAL_CFLAGS += -DMODEM_TYPE_XMM7260
