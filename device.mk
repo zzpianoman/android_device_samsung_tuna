@@ -33,7 +33,10 @@ TARGET_BOARD_OUT_DIR := tuna
 # - toroplus (CDMA/LTE, SPR)
 # We need to set some stuff up based on what device we're working with.
 PRODUCT_COPY_FILES += \
-	$(DEVICE_FOLDER)/etc/tunasetup.sh:system/vendor/bin/tunasetup.sh
+	$(DEVICE_FOLDER)/variants/tunasetup.sh:system/vendor/bin/tunasetup.sh \
+	$(DEVICE_FOLDER)/variants/maguro.prop:system/vendor/maguro/build.prop \
+	$(DEVICE_FOLDER)/variants/toro.prop:system/vendor/toro/build.prop \
+	$(DEVICE_FOLDER)/variants/toroplus.prop:system/vendor/toroplus/build.prop
 
 # Setup custom omap4xxx defines
 BOARD_USE_CUSTOM_LIBION := true

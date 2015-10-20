@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 # Only run script if we haven't run it before
-if [ -e "/system/vendor/etc/.variant" ] ;then
+if [ -e "/system/vendor/build.prop" ] ;then
     exit
 fi
 
@@ -50,10 +50,10 @@ move_toro_files() {
     mv /system/vendor/toro/lib/libims_jni.so /system/vendor/lib/libims_jni.so
     mv /system/vendor/toro/lib/libsec-ril_lte.so /system/vendor/lib/libsec-ril_lte.so
 
-    mkdir -p /system/vendor/app/
-    mv /system/vendor/toro/app/BIP.kpa /system/vendor/app/BIP.apk
-    mv /system/vendor/toro/app/IMSFramework.kpa /system/vendor/app/IMSFramework.apk
-    mv /system/vendor/toro/app/RTN.kpa /system/vendor/app/RTN.apk
+#    mkdir -p /system/vendor/app/
+#    mv /system/vendor/toro/app/BIP.kpa /system/vendor/app/BIP.apk
+#    mv /system/vendor/toro/app/IMSFramework.kpa /system/vendor/app/IMSFramework.apk
+#    mv /system/vendor/toro/app/RTN.kpa /system/vendor/app/RTN.apk
 
     move_torocommon_files
 }
@@ -61,11 +61,11 @@ move_toroplus_files() {
     mv /system/etc/wifi/bcmdhd.toroplus.cal /system/etc/wifi/bcmdhd.cal
     mv /system/vendor/toroplus/lib/libsec-ril_lte.so /system/vendor/lib/libsec-ril_lte.so
 
-    mkdir -p /system/vendor/app/
-    mv /system/vendor/toroplus/app/BIP.kpa /system/vendor/app/BIP.apk
-    mv /system/vendor/toroplus/app/HiddenMenu.kpa /system/vendor/app/HiddenMenu.apk
-    mv /system/vendor/toroplus/app/SDM.kpa /system/vendor/app/SDM.apk
-    mv /system/vendor/toroplus/app/SecPhone.kpa /system/vendor/app/SecPhone.apk
+#    mkdir -p /system/vendor/app/
+#    mv /system/vendor/toroplus/app/BIP.kpa /system/vendor/app/BIP.apk
+#    mv /system/vendor/toroplus/app/HiddenMenu.kpa /system/vendor/app/HiddenMenu.apk
+#    mv /system/vendor/toroplus/app/SDM.kpa /system/vendor/app/SDM.apk
+#    mv /system/vendor/toroplus/app/SecPhone.kpa /system/vendor/app/SecPhone.apk
 
     move_torocommon_files
 }
@@ -77,11 +77,6 @@ add_props_header() {
 }
 setup_maguro_props() {
     add_props_header "maguro"
-
-    setprop ro.product.device maguro
-    setprop ro.build.product maguro
-    echo "ro.product.device=maguro" >> /system/build.prop
-    echo "ro.build.product=maguro" >> /system/build.prop
 
     setprop rild.libpath "/vendor/lib/libsec-ril.so"
     echo "rild.libpath=/vendor/lib/libsec-ril.so" >> /system/build.prop
@@ -107,11 +102,6 @@ setup_torocommon_props() {
 }
 setup_toro_props() {
     add_props_header "toro"
-
-    setprop ro.product.device toro
-    setprop ro.build.product toro
-    echo "ro.product.device=toro" >> /system/build.prop
-    echo "ro.build.product=toro" >> /system/build.prop
 
     setup_torocommon_props
 
@@ -151,11 +141,6 @@ setup_toro_props() {
 }
 setup_toroplus_props() {
     add_props_header "toroplus"
-
-    setprop ro.product.device toroplus
-    setprop ro.build.product toroplus
-    echo "ro.product.device=toroplus" >> /system/build.prop
-    echo "ro.build.product=toroplus" >> /system/build.prop
 
     setup_torocommon_props
 
@@ -197,7 +182,7 @@ else
 fi
 
 # Store a file indicating we've run and what variant we set up.
-echo "$variant" > /system/vendor/etc/.variant
+#echo "$variant" > /system/vendor/etc/.variant
 
 # Now that we've finished our job, remount system ro and reboot
 mount -o remount,ro /system

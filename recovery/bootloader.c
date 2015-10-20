@@ -24,6 +24,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include "recovery_updater.h"
 #include "bootloader.h"
 
 #define SECTOR_SIZE 512
@@ -71,31 +72,6 @@ struct pit_partinfo {
         char filename[32];      /* file name */
         char deltaname[32];     /* delta file name - dedicated. */
 } __attribute__((packed));
-
-unsigned int read_whole_file(const char* fname, char* buffer,
-                             int buffer_size) {
-  memset(buffer, 0, buffer_size);
-
-  FILE* f = fopen(fname, "rb");
-  if (f == NULL) {
-    fprintf(stderr, "Cannot open %s!\n", fname);
-    return -1;
-  }
-
-  int read_byte_count = fread(buffer, 1, buffer_size - 1, f);
-  fclose(f);
-  if (read_byte_count < 0) {
-    fprintf(stderr, "Couldn't read %s\n", fname);
-    return -1;
-  }
-
-  // Remove any newlines at the end.
-  while (buffer[read_byte_count - 1] == '\n') {
-    buffer[--read_byte_count] = 0;
-  }
-
-  return 0;
-}
 
 // Get the specifications for this device
 int get_specification() {
