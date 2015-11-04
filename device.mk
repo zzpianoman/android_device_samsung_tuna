@@ -53,6 +53,7 @@ PRODUCT_PACKAGES += \
 	lights.tuna \
 	charger_res_images \
 	nfc.tuna \
+	libpn544_fw \
 	power.tuna
 
 PRODUCT_PACKAGES += \
