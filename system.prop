@@ -2,7 +2,7 @@
 # system.prop for tuna
 #
 
-rild.libargs=-d /dev/ttys0
+rild.libargs=-d /dev/ttys0 --
 rild.libpath=/vendor/lib/libsec-ril.so
 
 ro.opengles.version=131072
