@@ -57,6 +57,11 @@ PRODUCT_PACKAGES += \
 	libpn544_fw \
 	power.tuna
 
+# RIL
+PRODUCT_PACKAGES += \
+	libsecril-client \
+	libsecril-compat
+
 PRODUCT_PACKAGES += \
 	sensors.tuna \
 	libinvensense_mpl
@@ -67,10 +72,6 @@ PRODUCT_PACKAGES += \
 	audio.a2dp.default \
 	audio.usb.default \
 	audio.r_submix.default
-
-# RIL
-PRODUCT_PACKAGES += \
-	libsecril-client
 
 # LegacyCamera
 PRODUCT_PACKAGES += \
