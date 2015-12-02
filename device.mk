@@ -64,8 +64,7 @@ PRODUCT_PACKAGES += \
 	libsecril-shim
 
 PRODUCT_PACKAGES += \
-	sensors.tuna \
-	libinvensense_mpl
+	sensors.tuna
 
 # Audio
 PRODUCT_PACKAGES += \
