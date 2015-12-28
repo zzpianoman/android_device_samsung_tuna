@@ -24,7 +24,7 @@ DEVICE_FOLDER := device/samsung/tuna
 
 $(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 
-DEVICE_PACKAGE_OVERLAYS := $(DEVICE_FOLDER)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(DEVICE_FOLDER)/overlay
 
 TARGET_BOARD_OUT_DIR := tuna
 
