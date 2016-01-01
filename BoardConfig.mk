@@ -18,8 +18,6 @@ DEVICE_FOLDER := device/samsung/tuna
 WITH_DEXPREOPT := true
 WITH_DEXPREOPT_PIC := true
 
--include hardware/ti/omap4/BoardConfigCommon.mk
-
 PRODUCT_VENDOR_KERNEL_HEADERS += $(DEVICE_FOLDER)/kernel-headers
 
 # Default values, if not overridden else where.
@@ -30,10 +28,22 @@ TARGET_BOARD_OMAP_CPU := 4460
 
 TARGET_NO_BOOTLOADER := true
 
+TARGET_BOARD_PLATFORM := omap4
+TARGET_BOOTLOADER_BOARD_NAME := tuna
+
+# Processor
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_SMP := true
+TARGET_CPU_VARIANT := cortex-a9
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_FPU_VARIANT := neon-fp16
+
 BOARD_KERNEL_BASE := 0x80000000
 # BOARD_KERNEL_CMDLINE :=
 
-TARGET_KERNEL_CONFIG := fml_tuna_defconfig
+TARGET_KERNEL_CONFIG := cm_tuna_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/tuna
 
 # GCC 4.8 somehow breaks the eMMC patch applied on boot-up for VYL00M eMMCs on maguro.
