@@ -39,7 +39,7 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/variants/toroplus.prop:system/vendor/toroplus/build.prop
 
 # Setup custom omap4xxx defines
-BOARD_USE_CUSTOM_LIBION := true
+# BOARD_USE_CUSTOM_LIBION := true
 
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
@@ -236,7 +236,7 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-#$(call inherit-product-if-exists, vendor/ti/proprietary/omap4/ti-omap4-vendor.mk)
+$(call inherit-product-if-exists, vendor/ti/proprietary/omap4/omap4-vendor.mk)
 $(call inherit-product-if-exists, vendor/samsung/tuna/tuna-vendor.mk)
 
 BOARD_WLAN_DEVICE_REV := bcm4330_b2
