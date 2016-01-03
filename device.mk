@@ -203,6 +203,10 @@ PRODUCT_PACKAGES += \
 	librs_jni \
 	com.android.future.usb.accessory
 
+# TI OMAP4
+PRODUCT_PACKAGES += \
+	pvrsrvinit 
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	e2fsck \
