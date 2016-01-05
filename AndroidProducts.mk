@@ -16,5 +16,4 @@
 
 PRODUCT_MAKEFILES := \
 	$(LOCAL_DIR)/aosp_tuna.mk \
-	$(LOCAL_DIR)/cm_tuna.mk \
 	$(LOCAL_DIR)/fml_tuna.mk

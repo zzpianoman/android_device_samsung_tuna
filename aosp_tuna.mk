@@ -17,6 +17,7 @@
 # Since the first thing in PRODUCT_COPY_FILES takes precedence, organize some 'overrides' like this.
 $(call inherit-product, device/samsung/tuna/overrides.mk)
 
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # This is where we'd set a backup provider if we had one
@@ -29,4 +30,4 @@ PRODUCT_NAME := aosp_tuna
 PRODUCT_DEVICE := tuna
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := Galaxy Nexus
-PRODUCT_RESTRICT_VENDOR_FILES := true
+PRODUCT_RESTRICT_VENDOR_FILES := false

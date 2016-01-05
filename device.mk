@@ -19,6 +19,7 @@
 #
 # Everything in this directory will become public
 
+
 DEVICE_FOLDER := device/samsung/tuna
 
 $(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
@@ -71,6 +72,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	libsecril-client
 
+# LegacyCamera
+PRODUCT_PACKAGES += \
+	LegacyCamera
+
 ifeq ($(TARGET_TUNA_AUDIO_HDMI),true)
 PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/audio/policy/audio_policy.hdmi.conf:system/etc/audio_policy.conf
@@ -88,8 +93,8 @@ PRODUCT_COPY_FILES += \
 # Default to the Speex resampler, if it exists.
 # - This allows for playback of just about any sample rate as the Speex resampler doesn't
 #   have the in <= out*2 restriction, and is of a higher quality than the default resampler.
-PRODUCT_PROPERTY_OVERRIDES := \
-	af.resampler.quality=8
+# PRODUCT_PROPERTY_OVERRIDES := \
+#	af.resampler.quality=8
 
 PRODUCT_PACKAGES += \
 	tuna_hdcp_keys
@@ -243,8 +248,8 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-$(call inherit-product-if-exists, vendor/ti/proprietary/omap4/omap4-vendor.mk)
-$(call inherit-product-if-exists, vendor/samsung/tuna/tuna-vendor.mk)
+$(call inherit-product, vendor/ti/proprietary/omap4/omap4-vendor.mk)
+$(call inherit-product, vendor/samsung/tuna/device-vendor.mk)
 
 BOARD_WLAN_DEVICE_REV := bcm4330_b2
 WIFI_BAND             := 802_11_ABG

@@ -22,4 +22,4 @@
 
 add_lunch_combo aosp_tuna-userdebug
 add_lunch_combo fml_tuna-userdebug
-add_lunch_combo cm_tuna-userdebug
+

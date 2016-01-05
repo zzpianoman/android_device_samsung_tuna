@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+ANDROID_COMPILE_WITH_JACK := false
+
 DEVICE_FOLDER := device/samsung/tuna
 WITH_DEXPREOPT := true
 WITH_DEXPREOPT_PIC := true
@@ -56,7 +58,7 @@ TARGET_KERNEL_SOURCE := kernel/samsung/tuna
 # that has issues with it. GCC 4.9 is better than 4.8 at least though; so, if we're not
 # using GCC 4.9 for the kernel build, force GCC 4.7, which is rock-solid for kernels.
 ifneq ($(TARGET_GCC_VERSION_OTHER),4.9)
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
+# TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 endif
 
 TARGET_NO_RADIOIMAGE := true
