@@ -39,6 +39,10 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/variants/toro.prop:system/vendor/toro/build.prop \
 	$(DEVICE_FOLDER)/variants/toroplus.prop:system/vendor/toroplus/build.prop
 
+#toro apns
+PRODUCT_COPY_FILES += \
+	$(DEVICE_FOLDER)/prebuilt/etc/apns-conf.xml:system/vendor/toro/etc/apns-conf.xml
+
 # Setup custom omap4xxx defines
 # BOARD_USE_CUSTOM_LIBION := true
 
