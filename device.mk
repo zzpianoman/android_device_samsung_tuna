@@ -113,6 +113,10 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/recovery/twrp.fstab:recovery/root/etc/twrp.fstab
 #	$(DEVICE_FOLDER)/rootdir/init.recovery.tuna.rc:root/init.recovery.tuna.rc
 
+# GPS
+PRODUCT_COPY_FILES += \
+	$(DEVICE_FOLDER)/gps.conf:system/etc/gps.conf
+
 # Wifi
 ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
 PRODUCT_COPY_FILES += \
