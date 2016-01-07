@@ -14,12 +14,12 @@
 # zzpianoman@gmail.com
 
 
-until [ $(busybox pgrep com.android.systemui) ] ; do
+until [ "$(pgrep systemui)" ] ; do
 
 displaystate=$(cat /sys/devices/omapdss/display0/enabled)
 buttonpress=`getevent -ln -c 1 /dev/input/event2`
 
-if [ $(busybox pgrep com.android.systemui) ]
+if [ "$(pgrep systemui)" ]
 then
 	echo 1 > /sys/devices/omapdss/display0/enabled
 	break;
