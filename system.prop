@@ -23,3 +23,12 @@ persist.sys.usb.config=mtp,adb
 
 # Avoids retrying for an EGL config w/o EGL_SWAP_BEHAVIOR_PRESERVED
 debug.hwui.render_dirty_regions=false
+
+# Hide low_ram flag from Google Camera
+ro.config.lowram_hide_apps=com.google.android.GoogleCamera
+
+# Memory management tweaks.
+ro.config.low_ram=true
+persist.sys.force_highendgfx=true
+ro.config.max_starting_bg=4
+
