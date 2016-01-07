@@ -31,3 +31,12 @@ debug.hwui.swap_with_damage=false
 
 # Disable VFR support for encoders
 debug.vfr.enable=0
+
+# Hide low_ram flag from Google Camera
+ro.config.lowram_hide_apps=com.google.android.GoogleCamera
+
+# Memory management tweaks.
+ro.config.low_ram=true
+persist.sys.force_highendgfx=true
+ro.config.max_starting_bg=4
+
