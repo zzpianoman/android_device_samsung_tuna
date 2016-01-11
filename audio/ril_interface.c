@@ -18,7 +18,6 @@
 /*#define LOG_NDEBUG 0*/
 
 #include <dlfcn.h>
-#include <stdbool.h>
 #include <stdlib.h>
 
 #include <utils/Log.h>
@@ -30,7 +29,7 @@
 #define VOLUME_STEPS_PROPERTY "ro.config.vc_call_vol_steps"
 
 /* Audio WB AMR callback */
-void (*_audio_set_wb_amr_callback)(void *, bool);
+void (*_audio_set_wb_amr_callback)(void *, int);
 void *callback_data = NULL;
 
 void ril_register_set_wb_amr_callback(void *function, void *data)
@@ -45,7 +44,7 @@ static int ril_set_wb_amr_callback(void *ril_client,
                                    const void *data,
                                    size_t datalen)
 {
-    bool enable = ((int *)data)[0];
+    int enable = ((int *)data)[0];
 
     if (!callback_data || !_audio_set_wb_amr_callback)
         return -1;
@@ -129,4 +128,12 @@ int ril_set_call_audio_path(struct ril_handle *ril, enum _AudioPath path)
         return 0;
 
     return SetCallAudioPath(ril->client, path);
+}
+
+int ril_set_mic_mute(struct ril_handle *ril, enum _MuteCondition state)
+{
+    if (ril_connect_if_required(ril))
+        return 0;
+
+    return SetMute(ril->client, state);
 }
