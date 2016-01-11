@@ -31,22 +31,18 @@
   <item name="dsp.audio">150</item>
   <item name="dsp.video">200</item>
 
-  <!-- NOTE: listed as 150 for maguro, but 260 for toro(plus); splitting to 205 for now -->
-  <item name="radio.active">205</item>
+  <item name="radio.active">150</item>
 
   <item name="gps.on">55</item>
 
-  <!-- NOTE: maguro comes with a 1750mAh battery, toro(plus) comes with a 1850mAh battery -->
-  <!-- TODO: find a better way of reporting capacity -->
   <item name="battery.capacity">1750</item>
 
   <item name="radio.scanning">90</item> <!-- TBD -->
 
   <!-- Current consumed by the radio at different signal strengths, when paging  -->
-  <!-- NOTE: listed as 3.0 for maguro, but 5.0 for toro(plus); splitting to 4.0 for now -->
   <array name="radio.on"> <!-- 1 entry per signal strength bin, TBD -->
-    <value>4.0</value>
-    <value>4.0</value>
+    <value>3.0</value>
+    <value>3.0</value>
   </array>
 
   <array name="cpu.speeds">
@@ -60,8 +56,7 @@
   <item name="cpu.idle">7</item>
 
   <!-- Power consumption due to wake lock held -->
-  <!-- NOTE: listed as 20 for maguro, but 22 for toro(plus); splitting to 21 for now -->
-  <item name="cpu.awake">21</item>
+  <item name="cpu.awake">20</item>
 
   <!-- Power consumption at different speeds -->
   <array name="cpu.active">
