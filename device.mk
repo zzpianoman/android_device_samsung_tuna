@@ -249,7 +249,7 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-$(call inherit-product, vendor/ti/proprietary/omap4/omap4-vendor.mk)
+$(call inherit-product, vendor/ti/omap4/omap4-vendor.mk)
 $(call inherit-product, vendor/samsung/tuna/device-vendor.mk)
 
 BOARD_WLAN_DEVICE_REV := bcm4330_b2
