@@ -263,6 +263,15 @@
          format is UMTS|LTE|... -->
     <string translatable="false" name="config_radio_access_family">GSM | WCDMA | GPRS | EDGE</string>
 
+    <string-array name="config_locationProviderPackageNames" translatable="false">
+       <!-- The Google provider -->
+       <item>com.google.android.gms</item>
+       <!-- The standard AOSP fused location provider -->
+       <item>com.android.location.fused</item>
+       <!-- UnifiedNlp location provider. (http://f-droid.org/wiki/page/org.microg.nlp for details) -->
+       <item>org.microg.nlp</item>
+    </string-array>
+
     <!-- Values for GPS configuration -->
     <string-array translatable="false" name="config_gpsParameters">
         <item>NTP_SERVER=north-america.pool.ntp.org</item>
