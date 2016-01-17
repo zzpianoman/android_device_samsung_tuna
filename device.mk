@@ -70,6 +70,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	sensors.tuna
 
+# Telephony packages
+PRODUCT_PACKAGES += \
+    messaging \
+    Stk \
+    CellBroadcastReceiver
+
 # Audio
 PRODUCT_PACKAGES += \
 	audio.primary.tuna \
