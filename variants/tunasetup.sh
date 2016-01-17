@@ -22,6 +22,11 @@ delete_torocommon_files() {
 delete_toro_files() {
     rm -r /system/vendor/toro/
     rm /system/etc/wifi/bcmdhd.toro.cal
+    rm -r /system/app/VZWAPNService
+    rm -r /system/app/VZWAPNLib
+    rm -r /system/app/RTN
+    rm -r /system/app/IMSFramework
+    rm -r /system/app/BIP
 }
 delete_toroplus_files() {
     rm -r /system/vendor/toroplus/
@@ -54,6 +59,7 @@ move_toro_files() {
     mv /system/vendor/toro/lib/libims_jni.so /system/vendor/lib/libims_jni.so
     mv /system/vendor/toro/lib/libsec-ril_lte.so /system/vendor/lib/libsec-ril.so
     mv /system/vendor/toro/etc/apns-conf.xml /system/etc/apns-conf.xml
+    mv /system/vendor/toro/etc/permissions/* /system/etc/permissions
 
 #    mkdir -p /system/vendor/app/
 #    mv /system/vendor/toro/app/BIP.kpa /system/vendor/app/BIP.apk
