@@ -243,11 +243,6 @@
          turned off and the screen off animation has been performed. -->
     <bool name="config_dozeAfterScreenOff">true</bool>
 
-    <!--  Maximum number of supported users -->
-    <integer name="config_multiuserMaximumUsers">4</integer>
-    <!-- Whether UI for multi user should be shown -->
-    <bool name="config_enableMultiUserUI">true</bool>
-
     <!-- Device configuration setting the minfree tunable in the lowmemorykiller in the
     kernel. A high value will cause the lowmemorykiller to fire earlier, keeping more
     memory in the file cache and preventing I/O thrashing, but allowing fewer processes
@@ -281,6 +276,6 @@
         <item>SUPL_HOST=supl.google.com</item>
         <item>SUPL_PORT=7276</item>
         <item>SUPL_VER=0x20000</item>
-        <item>SUPL_MODE=0x01</item>
+        <item>SUPL_MODE=1</item>
     </string-array>
 </resources>
