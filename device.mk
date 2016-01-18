@@ -231,6 +231,11 @@ PRODUCT_PACKAGES += \
 	fibmap.f2fs \
 	f2fstat
 
+# CM Hardware Abstraction Framework
+PRODUCT_PACKAGES += \
+    org.cyanogenmod.hardware \
+    org.cyanogenmod.hardware.xml
+
 PRODUCT_PACKAGES += \
 	libwpa_client \
 	hostapd \
