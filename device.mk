@@ -218,6 +218,11 @@ PRODUCT_PACKAGES += \
 	fibmap.f2fs \
 	f2fstat
 
+# CM Hardware Abstraction Framework
+PRODUCT_PACKAGES += \
+    org.cyanogenmod.hardware \
+    org.cyanogenmod.hardware.xml
+
 # Display blank service
 PRODUCT_COPY_FILES += \
 	device/samsung/tuna/prebuilt/xbin/displayblank:system/xbin/displayblank 
