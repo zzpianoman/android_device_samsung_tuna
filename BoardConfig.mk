@@ -57,7 +57,7 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_FPU_VARIANT := neon-fp16
 
 BOARD_KERNEL_BASE := 0x80000000
-# BOARD_KERNEL_CMDLINE :=
+BOARD_KERNEL_CMDLINE := androidboot.hardware=$(TARGET_BOOTLOADER_BOARD_NAME) androidboot.selinux=permissive
 
 TARGET_KERNEL_CONFIG := cm_tuna_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/tuna
