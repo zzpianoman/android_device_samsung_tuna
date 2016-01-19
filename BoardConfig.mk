@@ -19,6 +19,9 @@ ANDROID_COMPILE_WITH_JACK := false
 # CMHW
 BOARD_HARDWARE_CLASS := $(DEVICE_FOLDER)/cmhw
 
+#Charging LED
+TARGET_USE_CHARGING_LED := true
+
 DEVICE_FOLDER := device/samsung/tuna
 # WITH_DEXPREOPT := true
 # WITH_DEXPREOPT_PIC := true

@@ -70,12 +70,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	sensors.tuna
 
-# Telephony packages
-PRODUCT_PACKAGES += \
-    messaging \
-    Stk \
-    CellBroadcastReceiver
-
 # Audio
 PRODUCT_PACKAGES += \
 	audio.primary.tuna \
@@ -234,11 +228,6 @@ PRODUCT_PACKAGES += \
 	fsck.f2fs \
 	fibmap.f2fs \
 	f2fstat
-
-# CM Hardware Abstraction Framework
-PRODUCT_PACKAGES += \
-    org.cyanogenmod.hardware \
-    org.cyanogenmod.hardware.xml
 
 PRODUCT_PACKAGES += \
 	libwpa_client \
