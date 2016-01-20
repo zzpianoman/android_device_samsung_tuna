@@ -107,6 +107,9 @@ else
     delete_torocommon_files
 fi
 
+# Set permissions
+chmod 755 /system/vendor/etc
+
 # Now that we've finished our job, remount system ro and reboot
 mount -o remount,ro /system
 reboot
