@@ -128,7 +128,7 @@
 /* #define to use mmap no-irq mode for playback, #undef for non-mmap irq mode */
 #undef PLAYBACK_MMAP        // was #define
 /* short period (aka low latency) in milliseconds */
-#define SHORT_PERIOD_MS 11   // was 22
+#define SHORT_PERIOD_MS 6   // was 22
 /* deep buffer short period (screen on) in milliseconds */
 #define DEEP_BUFFER_SHORT_PERIOD_MS 22
 /* deep buffer long period (screen off) in milliseconds */
