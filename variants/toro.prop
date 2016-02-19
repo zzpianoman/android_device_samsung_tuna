@@ -23,12 +23,6 @@ ro.gsm.2nd_data_retry_config=max_retries=infinite,default_randomization=2000,0,0
 
 ro.cdma.otaspnumschema=SELC,1,80,99
 
-# Store correct IMSI when retreived from SIMRecords and use it for Ruim Records
-ro.telephony.get_imsi_from_sim=true
-
-# Invokes parameters for needsOldRilFeature to fix Toro radio
-ro.telephony.ril.config=usevoicetechfordata,writeaidonly
-
 # Set CDMA SUBSCRIPTION SOURCE to RUIM in Database for this device
 ro.telephony.default_cdma_sub=0
 
