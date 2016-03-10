@@ -82,6 +82,9 @@ COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 
 TARGET_EXTRA_CFLAGS += -DOMAP_TUNA
 
+DOMX_TUNA := true
+COMMON_GLOBAL_CFLAGS += -DDOMX_TUNA
+
 # For enabling some things that are OMAP_ENHANCEMENT's and are applicable to tuna...
 OMAP_TUNA := true
 
