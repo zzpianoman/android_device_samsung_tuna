@@ -124,12 +124,13 @@ service dumpdcc /system/bin/dumpdcc
 
 # create filesystems if necessary
 service setup_fs /system/bin/setup_fs \
-		/dev/block/platform/omap/omap_hsmmc.0/by-name/cache \
-		/dev/block/platform/omap/omap_hsmmc.0/by-name/userdata
-	class core
-	user root
-	group root
-	oneshot
+        /dev/block/platform/omap/omap_hsmmc.0/by-name/cache \
+        /dev/block/platform/omap/omap_hsmmc.0/by-name/userdata
+        class core
+        user root
+        group root
+        seclabel u:r:fs_setup:s0
+        oneshot
 
 service tf_daemon /system/bin/tf_daemon \
 	-d -c /vendor/etc/smc_normal_world_android_cfg.ini
@@ -139,13 +140,14 @@ service tf_daemon /system/bin/tf_daemon \
 	disabled
 
 service smc_pa_wvdrm /system/bin/smc_pa_ctrl \
-	-c /vendor/etc/smc_normal_world_android_cfg.ini \
-	start /vendor/firmware/smc_pa_wvdrm.ift
-	class core
-	user drmrpc
-	group drmrpc
-	oneshot
-	disabled
+        -c /vendor/etc/smc_normal_world_android_cfg.ini \
+        start /vendor/firmware/smc_pa_wvdrm.ift
+        class core
+        user drmrpc
+        group drmrpc
+        seclabel u:r:smc_pa_ctrl:s0
+        oneshot
+        disabled
 
 service p2p_supplicant /system/bin/wpa_supplicant \
 	-iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -235,6 +237,7 @@ service tuna_setup /system/vendor/bin/tunasetup.sh
 	class main
 	user root
 	group root
+	seclabel u:r:recovery:s0
 	disabled
 	oneshot
 
