@@ -32,7 +32,7 @@
 #define MAX_BUF_SZ  10
 
 /* initialize to something safe */
-static char screen_off_max_freq[MAX_BUF_SZ] = "700000";
+static char screen_off_max_freq[MAX_BUF_SZ] = "525000";
 static char scaling_max_freq[MAX_BUF_SZ] = "1200000";
 
 struct tuna_power_module {
@@ -87,13 +87,13 @@ static void tuna_power_init(struct power_module *module)
     sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/min_sample_time",
                 "60000");
     sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/hispeed_freq",
-                "700000");
+                "998400");
     sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/target_loads",
-                "70 920000:75 1200000:85");
+                "65 998400:75 1200000:90");
     sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load",
-                "99");
+                "90");
     sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay",
-                "80000");
+                "20000");
 }
 
 static int boostpulse_open(struct tuna_power_module *tuna)
