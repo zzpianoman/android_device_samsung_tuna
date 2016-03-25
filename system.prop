@@ -25,7 +25,7 @@ persist.sys.usb.config=mtp,adb
 debug.hwui.render_dirty_regions=false
 
 # Hide low_ram flag from Google Camera
-ro.config.lowram_hide_apps=com.google.android.GoogleCamera
+ro.config.lowram_hide_apps=com.google.android.GoogleCamera,com.google.earth
 
 # Memory management tweaks.
 ro.config.low_ram=true
