@@ -30,5 +30,6 @@ ro.config.lowram_hide_apps=com.google.android.GoogleCamera,com.google.earth
 # Memory management tweaks.
 ro.config.low_ram=true
 persist.sys.force_highendgfx=true
-ro.config.max_starting_bg=4
+ro.config.max_starting_bg=6
+config.disable_atlas=true
 
