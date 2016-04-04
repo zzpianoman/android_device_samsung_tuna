@@ -255,6 +255,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product, vendor/ti/omap4/omap4-vendor.mk)
 $(call inherit-product, vendor/samsung/tuna/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/widevine/omap4/widevine-vendor.mk) 
 
 BOARD_WLAN_DEVICE_REV := bcm4330_b2
 WIFI_BAND             := 802_11_ABG
