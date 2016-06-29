@@ -147,7 +147,7 @@
 /* number of base blocks in a short period (low latency) */
 #define SHORT_PERIOD_MULTIPLIER (SHORT_PERIOD_MS * MULTIPLIER_FACTOR)
 /* number of frames per short period (low latency) */
-#define SHORT_PERIOD_SIZE (ABE_BASE_FRAME_COUNT * SHORT_PERIOD_MULTIPLIER) / 2
+#define SHORT_PERIOD_SIZE (ABE_BASE_FRAME_COUNT * SHORT_PERIOD_MULTIPLIER)
 
 /* number of base blocks in a short deep buffer period (screen on) */
 #define DEEP_BUFFER_SHORT_PERIOD_MULTIPLIER (DEEP_BUFFER_SHORT_PERIOD_MS * MULTIPLIER_FACTOR)
@@ -1702,12 +1702,6 @@ static size_t out_get_buffer_size_low_latency(const struct audio_stream *stream)
     multiple of 16 frames, as audioflinger expects audio buffers to
     be a multiple of 16 frames. Note: we use the default rate here
     from pcm_config_tones.rate. */
-/*
-    size_t short_period_size = SHORT_PERIOD_SIZE;
-    if (property_get_bool("persist.sys.low_latency", false)) {
-       short_period_size = 96;
-    }
-*/
     size_t size = (SHORT_PERIOD_SIZE * DEFAULT_OUT_SAMPLING_RATE) / pcm_config_tones.rate;
     size = ((size + 15) / 16) * 16;
     return size * audio_stream_frame_size((struct audio_stream *)stream);
@@ -1935,13 +1929,6 @@ static uint32_t out_get_latency_low_latency(const struct audio_stream_out *strea
     struct tuna_stream_out *out = (struct tuna_stream_out *)stream;
 
     /*  Note: we use the default rate here from pcm_config_mm.rate */
-/*
-    size_t short_period_size = SHORT_PERIOD_SIZE;
-
-    if (property_get_bool("persist.sys.low_latency", false)) {
-       short_period_size = 96;
-    }
-*/
     return (SHORT_PERIOD_SIZE * PLAYBACK_SHORT_PERIOD_COUNT * 1000) / pcm_config_tones.rate;
 }
 
