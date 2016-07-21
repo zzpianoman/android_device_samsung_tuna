@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+ANDROID_COMPILE_WITH_JACK := false
+
 DEVICE_FOLDER := device/samsung/tuna
 
 # inherit from omap4
