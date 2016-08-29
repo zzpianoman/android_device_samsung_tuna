@@ -41,7 +41,7 @@ TARGET_BOARD_PLATFORM := omap4
 TARGET_BOOTLOADER_BOARD_NAME := tuna
 
 # Memory management
-MALLOC_IMPL := dlmalloc
+# MALLOC_IMPL := dlmalloc
 ART_USE_HSPACE_COMPACT := true
 
 # EGL
